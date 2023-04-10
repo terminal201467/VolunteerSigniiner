@@ -1,0 +1,6 @@
+framework module Pods_VolunteerSigniinerTests {
+  umbrella header "Pods-VolunteerSigniinerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
