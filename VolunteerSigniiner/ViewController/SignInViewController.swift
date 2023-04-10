@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxRelay
 import RxDataSources
+import SnapKit
 
 enum CellType {
     case title(String)
@@ -32,6 +33,8 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var table: UITableView!
     
+    private let alreadyHaveButton = UIButton()
+    
     private let disposeBag = DisposeBag()
     
     private let viewModel = LoginViewModel()
@@ -47,10 +50,18 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setTable()
         setTableDataSource()
+        setButton()
+        autoLayout()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    private func setButton() {
+        alreadyHaveButton.setTitle("已經有帳戶了嗎？點擊這裡直接登入", for: .normal)
+        alreadyHaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        alreadyHaveButton.setTitleColor(.brown, for: .normal)
     }
     
     private func setTable() {
@@ -89,21 +100,18 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
                 //一般註冊
                 cell.selectionStyle = .none
                 cell.configure(with: .normal)
-                cell.tapSubject = self.viewModel.loginButtonLoginTapped
                 return cell
             case .GoogleSignUp:
                 let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.reuseIdentifier, for: indexPath) as! ButtonTableViewCell
                 //Google註冊
                 cell.selectionStyle = .none
                 cell.configure(with: .GooleLogin)
-                cell.tapSubject = self.viewModel.thirdPartyButtonLoginTapped
                 return cell
             case .FaceBookSignUp:
                 let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.reuseIdentifier, for: indexPath) as! ButtonTableViewCell
                 //Facebook註冊
                 cell.selectionStyle = .none
                 cell.configure(with: .FacebookLogin)
-                cell.tapSubject = self.viewModel.thirdPartyButtonLoginTapped
                 return cell
             }
         }
@@ -112,6 +120,28 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
             .map { [SectionModel(model: (), items: $0)] }
             .bind(to: table.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        table.rx.itemSelected
+            .subscribe(onNext: { indexPath in
+                let sectionModel = dataSource.sectionModels[indexPath.section]
+                let cellType = sectionModel.items[indexPath.row]
+                switch cellType {
+                case .title: return
+                case .acountInputer: return
+                case .passwordInputer: return
+                case .SignInButton: self.viewModel.normalLogin()
+                case .GoogleSignUp: self.viewModel.thirdPartyLogin()
+                case .FaceBookSignUp: self.viewModel.thirdPartyLogin()
+                }
+            })
+    }
+    
+    private func autoLayout() {
+        view.addSubview(alreadyHaveButton)
+        alreadyHaveButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(table.snp.bottom)
+        }
     }
     
 }

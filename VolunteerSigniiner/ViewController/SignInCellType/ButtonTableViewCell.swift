@@ -50,6 +50,13 @@ class ButtonTableViewCell: UITableViewCell {
         return view
     }()
     
+    let titleBackgroundView: UIView = {
+       let view = UIView()
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 2
+        return view
+    }()
+    
     private let disposeBag = DisposeBag()
     
     private let tapGesture = UITapGestureRecognizer()
@@ -87,6 +94,14 @@ class ButtonTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
         }
         
+        addSubview(titleBackgroundView)
+        titleBackgroundView.snp.makeConstraints { make in
+            make.centerX.equalTo(loginTitleView.snp.centerX)
+            make.centerY.equalTo(loginTitleView.snp.centerY)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(2 / 3)
+        }
     }
     
     private func setGesture() {

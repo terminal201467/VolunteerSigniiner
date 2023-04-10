@@ -53,11 +53,11 @@ class LoginViewModel {
         
     }
     
-    func thirdPartyLogin() {
+    func thirdPartySignUp() {
         
     }
     
-    func normalLogin() {
+    func normalSignUp() {
         
     }
     
