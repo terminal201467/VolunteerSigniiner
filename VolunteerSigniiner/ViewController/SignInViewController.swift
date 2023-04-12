@@ -87,13 +87,19 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.reuseIdentifier, for: indexPath) as! TextFieldTableViewCell
                 cell.selectionStyle = .none
                 cell.inputer.placeholder = "帳號"
-                cell.textVariable = self.viewModel.accountInputChanged
+                cell.inputer.rx.text
+                    .orEmpty
+                    .bind(to: self.viewModel.accountInputChanged)
+                    .disposed(by: self.disposeBag)
                 return cell
             case .passwordInputer:
                 let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.reuseIdentifier, for: indexPath) as! TextFieldTableViewCell
                 cell.selectionStyle = .none
                 cell.inputer.placeholder = "密碼"
-                cell.textVariable = self.viewModel.passwordInputChanged
+                cell.inputer.rx.text
+                    .orEmpty
+                    .bind(to: self.viewModel.passwordInputChanged)
+                    .disposed(by: self.disposeBag)
                 return cell
             case .SignInButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.reuseIdentifier, for: indexPath) as! ButtonTableViewCell
@@ -129,9 +135,9 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
                 case .title: return
                 case .acountInputer: return
                 case .passwordInputer: return
-                case .SignInButton: self.viewModel.normalLogin()
-                case .GoogleSignUp: self.viewModel.thirdPartyLogin()
-                case .FaceBookSignUp: self.viewModel.thirdPartyLogin()
+                case .SignInButton: self.viewModel.loginButtonLoginTapped.onNext(())
+                case .GoogleSignUp: self.viewModel.googleSignInTapped.onNext(())
+                case .FaceBookSignUp: self.viewModel.facebookSignInTapped.onNext(())
                 }
             })
     }

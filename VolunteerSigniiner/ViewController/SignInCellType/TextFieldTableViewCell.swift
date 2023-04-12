@@ -24,12 +24,9 @@ class TextFieldTableViewCell: UITableViewCell {
         return textField
     }()
     
-    public var textVariable = BehaviorRelay<String>(value: "")
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         autoLayout()
-        setTextField()
     }
     
     required init?(coder: NSCoder) {
@@ -44,15 +41,6 @@ class TextFieldTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(5)
             make.trailing.equalToSuperview().offset(-5)
         }
-    }
-    
-    private func setTextField() {
-        inputer.rx.text.orEmpty
-            .bind(to: textVariable)
-            .disposed(by: disposeBag)
-        textVariable.asObservable()
-            .bind(to: inputer.rx.text)
-            .disposed(by: disposeBag)
     }
     
 }

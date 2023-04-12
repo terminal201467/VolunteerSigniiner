@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxRelay
+import GoogleSignIn
  
 enum VerifyState: Int, CaseIterable {
     case verify = 0, unverify
@@ -37,10 +38,11 @@ enum VerifyState: Int, CaseIterable {
 class LoginViewModel {
     
     //MARK: - UI
-    
     let loginButtonLoginTapped = PublishSubject<Void>()
     
-    let thirdPartyButtonLoginTapped = PublishSubject<Void>()
+    let googleSignInTapped = PublishSubject<Void>()
+    
+    let facebookSignInTapped = PublishSubject<Void>()
     
     let accountInputChanged = BehaviorRelay<String>(value: "")
     
@@ -48,17 +50,61 @@ class LoginViewModel {
     
     private let disposeBag = DisposeBag()
     
-    //MARK: SignUp
-    func signUp(acount: String,password: String) {
+    private let authService = FirebaseAuthService()
+    
+    private var inputAccount: String = ""
+    
+    private var inputPassword: String = ""
+    
+    //MARK: - initialization
+    init() {
+        accountInputChanged
+            .subscribe(onNext: { text in
+            print("text:\(text)")
+        })
+        .disposed(by: disposeBag)
+        
+        passwordInputChanged
+            .subscribe(onNext: { text in
+                print("text:\(text)")
+            })
+            .disposed(by: disposeBag)
+        
+        loginButtonLoginTapped.subscribe { [weak self] in
+            guard let self = self else { return }
+            self.authService.register(with: self.inputAccount, password: self.inputPassword) { (result) in
+                switch result {
+                case .success:
+                    print("\(self.checkBothAcountAndPassword(with: self.inputAccount, with: self.inputPassword))")
+                    print("Login Successful")
+                case .failure(let error):
+                    print("Login Error:\(error)")
+                }
+            }
+        }
+        
+        googleSignInTapped.subscribe(onNext: { [weak self] in
+            self?.googleSignIn()
+        })
+        .disposed(by: disposeBag)
+        
+        facebookSignInTapped.subscribe(onNext: { [weak self] in
+            self?.facebookSignIn()
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    func facebookSignIn() {
         
     }
     
-    func thirdPartySignUp() {
-        
+    func googleSignIn() {
+        let viewController = GoogleSignInViewController()
+        GIDSignIn.sharedInstance.signIn(withPresenting: viewController)
     }
     
-    func normalSignUp() {
-        
+    func googleSignOut() {
+        GIDSignIn.sharedInstance.signOut()
     }
     
     //MARK: - Check Account and Password

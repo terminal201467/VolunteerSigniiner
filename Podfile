@@ -11,6 +11,10 @@ target 'VolunteerSigniiner' do
   pod 'RxRelay'
   pod 'RxDataSources'
   pod 'SnapKit'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
 
   target 'VolunteerSigniinerTests' do
     inherit! :search_paths
