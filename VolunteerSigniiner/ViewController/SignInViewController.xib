@@ -19,14 +19,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NB3-zM-Sm3">
-                    <rect key="frame" x="26.666666666666657" y="226" width="340" height="400"/>
+                    <rect key="frame" x="26.666666666666657" y="170.33333333333334" width="340" height="511.33333333333326"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="NB3-zM-Sm3" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.86514" id="1H5-uQ-3pI"/>
-                <constraint firstItem="NB3-zM-Sm3" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.469484" id="2fC-1k-1eN"/>
+                <constraint firstItem="NB3-zM-Sm3" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="2fC-1k-1eN"/>
                 <constraint firstItem="NB3-zM-Sm3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kWm-wb-t4F"/>
                 <constraint firstItem="NB3-zM-Sm3" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="zRV-JD-c8S"/>
             </constraints>

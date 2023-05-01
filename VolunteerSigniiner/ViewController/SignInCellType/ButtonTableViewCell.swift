@@ -10,21 +10,29 @@ import RxSwift
 import RxCocoa
 import RxRelay
 import SnapKit
+import FBSDKLoginKit
+import GoogleSignIn
 
 enum LoginType: Int, CaseIterable {
-    case normal = 0, GooleLogin, FacebookLogin
+    case normalSignUp = 0, GooleSignUp, FacebookSignUp, normalLogin, GooleLogin, FacebookLogin
     var text: String {
         switch self {
-        case .normal: return "一般註冊"
-        case .GooleLogin: return "Google註冊"
-        case .FacebookLogin: return "Facebooke註冊"
+        case .normalSignUp: return "一般註冊"
+        case .GooleSignUp: return "Google註冊"
+        case .FacebookSignUp: return "Facebook註冊"
+        case .normalLogin: return "一般登入"
+        case .GooleLogin: return "Google登入"
+        case .FacebookLogin: return "Facebooke登入"
         }
     }
     var icon: String {
         switch self {
-        case .normal: return ""
+        case .normalSignUp: return ""
         case .GooleLogin: return "google"
         case .FacebookLogin: return "facebook"
+        case .normalLogin: return ""
+        case .GooleSignUp: return "google"
+        case .FacebookSignUp: return "facebook"
         }
     }
 }
@@ -33,84 +41,92 @@ class ButtonTableViewCell: UITableViewCell {
     
     static let reuseIdentifier: String = "ButtonCell"
 
-    private let loginLabel: UILabel = {
-       let label = UILabel()
-        label.textAlignment = .center
-        return label
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("登入", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 5
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowOffset = CGSize(width: 0, height: 1)
+        button.layer.shadowRadius = 0.5
+        button.backgroundColor = .white
+        return button
     }()
     
-    private let loginLogo = UIImageView()
-    
-    private lazy var loginTitleView: UIStackView = {
-       let view = UIStackView(arrangedSubviews: [loginLogo,loginLabel])
-        view.alignment = .fill
-        view.distribution = .fillProportionally
-        view.axis = .horizontal
-        view.spacing = 5
-        return view
+    private let facebookLoginButton: FBLoginButton = {
+        let button = FBLoginButton(type: .roundedRect)
+        return button
     }()
     
-    let titleBackgroundView: UIView = {
-       let view = UIView()
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 2
-        return view
+    private let googleLoginButton: GIDSignInButton = {
+       let button = GIDSignInButton()
+        button.style = .wide
+        return button
     }()
     
     private let disposeBag = DisposeBag()
     
-    private let tapGesture = UITapGestureRecognizer()
+    var normalLoginTapSubject = PublishSubject<Void>()
     
-    var tapSubject = PublishSubject<Void>()
+    var googleLoginTapSubject = PublishSubject<Void>()
+    
+    var facebookLoginTapSubject = PublishSubject<String>()
     
     private var loginType: LoginType?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         autoLayout()
-        setGesture()
+        setFBLoginButtonDelegate()
+        setGoogleLoginButtonSubscribe()
+        setNormalLoginButtonSubscribe()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setFBLoginButtonDelegate() {
+        facebookLoginButton.delegate = self
+    }
+    
+    private func setGoogleLoginButtonSubscribe() {
+        googleLoginButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { [weak self] _ in
+                self?.googleLoginTapSubject.onNext(())
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setNormalLoginButtonSubscribe() {
+        loginButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.normalLoginTapSubject.onNext(())
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func autoLayout() {
-        
-        addSubview(loginLabel)
-        loginLabel.snp.makeConstraints { make in
-            make.height.equalToSuperview()
-            make.width.equalTo(120)
+        contentView.addSubview(loginButton)
+        loginButton.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            make.width.equalTo(160)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
-        
-        addSubview(loginLogo)
-        loginLogo.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
-        }
-        
-        addSubview(loginTitleView)
-        loginTitleView.snp.makeConstraints { make in
+    
+        contentView.addSubview(googleLoginButton)
+        googleLoginButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
         
-        addSubview(titleBackgroundView)
-        titleBackgroundView.snp.makeConstraints { make in
-            make.centerX.equalTo(loginTitleView.snp.centerX)
-            make.centerY.equalTo(loginTitleView.snp.centerY)
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(2 / 3)
+        contentView.addSubview(facebookLoginButton)
+        facebookLoginButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
-    }
-    
-    private func setGesture() {
-        loginTitleView.addGestureRecognizer(tapGesture)
-        tapGesture.rx.event
-            .subscribe(onNext: { [weak self] _ in
-                self?.tapSubject.onNext(())
-            })
-            .disposed(by: disposeBag)
     }
     
     func configure(with loginType: LoginType) {
@@ -120,17 +136,47 @@ class ButtonTableViewCell: UITableViewCell {
     
     private func setLogin(with type: LoginType) {
         switch type {
-        case .normal:
-            loginLogo.isHidden = true
-            loginLabel.text = LoginType.normal.text
+        case .normalSignUp:
+            facebookLoginButton.isHidden = true
+            googleLoginButton.isHidden = true
+            loginButton.setTitle("註冊", for: .normal)
+        case .normalLogin:
+            googleLoginButton.isHidden = true
+            facebookLoginButton.isHidden = true
+        case .GooleSignUp:
+            facebookLoginButton.isHidden = true
+            googleLoginButton.isHidden = false
+        case .FacebookSignUp:
+            facebookLoginButton.isHidden = false
+            googleLoginButton.isHidden = true
         case .GooleLogin:
-            loginLogo.isHidden = false
-            loginLogo.image = UIImage(named: LoginType.GooleLogin.icon)
-            loginLabel.text = LoginType.GooleLogin.text
+            facebookLoginButton.isHidden = true
+            googleLoginButton.isHidden = false
+            loginButton.isHidden = true
         case .FacebookLogin:
-            loginLogo.isHidden = false
-            loginLogo.image = UIImage(named: LoginType.FacebookLogin.icon)
-            loginLabel.text = LoginType.FacebookLogin.text
+            facebookLoginButton.isHidden = false
+            googleLoginButton.isHidden = true
+            loginButton.isHidden = true
         }
+    }
+}
+
+
+extension ButtonTableViewCell: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBSDKLoginKit.FBLoginButton, didCompleteWith result: FBSDKLoginKit.LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+            print("Facebook 登錄失敗：\(error.localizedDescription)")
+            return
+        }
+        
+        if let accessToken = result?.token?.tokenString {
+            facebookLoginTapSubject.onNext(accessToken)
+            print("accessToken:\(accessToken)")
+        }
+        
+    }
+
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {
+        print("logout?")
     }
 }

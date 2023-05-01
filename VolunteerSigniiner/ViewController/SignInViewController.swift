@@ -12,13 +12,11 @@ import RxRelay
 import RxDataSources
 import SnapKit
 
-enum CellType {
+enum SignUpCellType {
     case title(String)
     case acountInputer(textVariable: BehaviorRelay<String>)
     case passwordInputer(textVariable: BehaviorRelay<String>)
-    case SignInButton
-    case GoogleSignUp
-    case FaceBookSignUp
+    case signInButton
 }
 
 
@@ -37,32 +35,43 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
     
     private let disposeBag = DisposeBag()
     
-    private let viewModel = LoginViewModel()
+    private let viewModel = SignUpViewModel()
     
-    private lazy var cellType:[CellType] = [.title("SignIn"),
+    private lazy var cellType:[SignUpCellType] = [.title("SignIn"),
                                .acountInputer(textVariable: viewModel.accountInputChanged),
                                .passwordInputer(textVariable: viewModel.passwordInputChanged),
-                               .SignInButton,
-                               .GoogleSignUp,
-                               .FaceBookSignUp]
+                               .signInButton]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
         setTableDataSource()
-        setButton()
+//        setButton()
         autoLayout()
+        setToLoginViewController()
+        setNavationBar()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
-    private func setButton() {
-        alreadyHaveButton.setTitle("已經有帳戶了嗎？點擊這裡直接登入", for: .normal)
-        alreadyHaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        alreadyHaveButton.setTitleColor(.brown, for: .normal)
+    private func setNavationBar() {
+        navigationItem.hidesBackButton = true
     }
+    
+//    private func setButton() {
+//        alreadyHaveButton.setTitle("已經有帳戶了嗎？點擊這裡直接登入", for: .normal)
+//        alreadyHaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+//        alreadyHaveButton.setTitleColor(.brown, for: .normal)
+//        alreadyHaveButton.rx.tap
+//            .subscribe(onNext: {
+//                print("Button tappped!")
+//                let loginViewController = LoginViewController()
+//                self.navigationController?.pushViewController(loginViewController, animated: true)
+//            })
+//            .disposed(by: disposeBag)
+//    }
     
     private func setTable() {
         table.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.reuseIdentifier)
@@ -77,7 +86,7 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setTableDataSource() {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<Void,CellType>> { dataSources, tableView, indexPath, item in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<Void,SignUpCellType>> { dataSources, tableView, indexPath, item in
             switch item {
             case .title:
                 let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.reuseIdentifier, for: indexPath) as! TitleTableViewCell
@@ -101,23 +110,11 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
                     .bind(to: self.viewModel.passwordInputChanged)
                     .disposed(by: self.disposeBag)
                 return cell
-            case .SignInButton:
+            case .signInButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.reuseIdentifier, for: indexPath) as! ButtonTableViewCell
                 //一般註冊
                 cell.selectionStyle = .none
-                cell.configure(with: .normal)
-                return cell
-            case .GoogleSignUp:
-                let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.reuseIdentifier, for: indexPath) as! ButtonTableViewCell
-                //Google註冊
-                cell.selectionStyle = .none
-                cell.configure(with: .GooleLogin)
-                return cell
-            case .FaceBookSignUp:
-                let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.reuseIdentifier, for: indexPath) as! ButtonTableViewCell
-                //Facebook註冊
-                cell.selectionStyle = .none
-                cell.configure(with: .FacebookLogin)
+                cell.configure(with: .normalSignUp)
                 return cell
             }
         }
@@ -135,9 +132,7 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
                 case .title: return
                 case .acountInputer: return
                 case .passwordInputer: return
-                case .SignInButton: self.viewModel.loginButtonLoginTapped.onNext(())
-                case .GoogleSignUp: self.viewModel.googleSignInTapped.onNext(())
-                case .FaceBookSignUp: self.viewModel.facebookSignInTapped.onNext(())
+                case .signInButton: self.viewModel.loginButtonLoginTapped.onNext(())
                 }
             })
     }
@@ -150,6 +145,13 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    private func setToLoginViewController() {
+        viewModel.pushToController = {
+            self.presentedViewController?.dismiss(animated: true)
+            let loginViewController = LoginViewController()
+            self.navigationController?.pushViewController(loginViewController, animated: true)
+        }
+    }
 }
 
 extension SignInViewController: UITableViewDelegate {

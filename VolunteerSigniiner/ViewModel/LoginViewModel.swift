@@ -2,7 +2,7 @@
 //  LoginViewModel.swift
 //  VolunteerSigniiner
 //
-//  Created by Jhen Mu on 2023/4/2.
+//  Created by Jhen Mu on 2023/4/25.
 //
 
 import Foundation
@@ -10,39 +10,17 @@ import RxSwift
 import RxCocoa
 import RxRelay
 import GoogleSignIn
- 
-enum VerifyState: Int, CaseIterable {
-    case verify = 0, unverify
-    var acountVerify: String {
-        switch self {
-        case .verify: return "通過驗證"
-        case .unverify: return "您的帳號不完整"
-        }
-    }
-    var passwordVerify: String {
-        switch self {
-        case .verify: return "通過驗證"
-        case .unverify: return "密碼字數不足"
-        }
-    }
-    
-    var checkAccountAndPasswordVerify: String {
-        switch self {
-        case .verify: return "已填寫"
-        case .unverify: return "未填寫"
-        }
-    }
-}
-
+import FirebaseAuth
+import FBSDKLoginKit
 
 class LoginViewModel {
     
     //MARK: - UI
     let loginButtonLoginTapped = PublishSubject<Void>()
     
-    let googleSignInTapped = PublishSubject<Void>()
+    let googleSignInTapped = PublishSubject<UIViewController>()
     
-    let facebookSignInTapped = PublishSubject<Void>()
+    let facebookSignInTapped = PublishSubject<String>()
     
     let accountInputChanged = BehaviorRelay<String>(value: "")
     
@@ -52,87 +30,111 @@ class LoginViewModel {
     
     private let authService = FirebaseAuthService()
     
+    private let facebookLoginManager = LoginManager()
+    
     private var inputAccount: String = ""
     
     private var inputPassword: String = ""
     
-    //MARK: - initialization
+    //MARK: -LoginControl
+    
+    var loginResponse: ((String) -> Void)?
+    
+    //MARK: -Initialization
+    
     init() {
         accountInputChanged
             .subscribe(onNext: { text in
-            print("text:\(text)")
+            print("Account text:\(text)")
         })
         .disposed(by: disposeBag)
         
         passwordInputChanged
             .subscribe(onNext: { text in
-                print("text:\(text)")
+                print("Password text:\(text)")
             })
             .disposed(by: disposeBag)
         
-        loginButtonLoginTapped.subscribe { [weak self] in
-            guard let self = self else { return }
-            self.authService.register(with: self.inputAccount, password: self.inputPassword) { (result) in
+        loginButtonLoginTapped.subscribe(onNext: { [weak self] in
+            self?.normalLogin(completion: { loginResponse in
+                print("loginResponse:\(loginResponse.description)")
+            })
+        })
+        
+        googleSignInTapped.subscribe(onNext: { viewController in
+            self.googleLogin(viewController: viewController) { loginResponse in
+                print("loginResponse:\(loginResponse.description)")
+                self.loginResponse?(loginResponse.description)
+            }
+        })
+        .disposed(by: disposeBag)
+        
+        facebookSignInTapped.subscribe(onNext: { accessToken in
+            self.facebookSignIn(with: accessToken) { result in
                 switch result {
-                case .success:
-                    print("\(self.checkBothAcountAndPassword(with: self.inputAccount, with: self.inputPassword))")
-                    print("Login Successful")
                 case .failure(let error):
-                    print("Login Error:\(error)")
+                    print("error:\(error.localizedDescription)")
+                case .success(let result):
+                    self.loginResponse?("\(result)")
                 }
             }
-        }
-        
-        googleSignInTapped.subscribe(onNext: { [weak self] in
-            self?.googleSignIn()
-        })
-        .disposed(by: disposeBag)
-        
-        facebookSignInTapped.subscribe(onNext: { [weak self] in
-            self?.facebookSignIn()
         })
         .disposed(by: disposeBag)
     }
     
-    func facebookSignIn() {
-        
-    }
-    
-    func googleSignIn() {
-        let viewController = GoogleSignInViewController()
-        GIDSignIn.sharedInstance.signIn(withPresenting: viewController)
-    }
-    
-    func googleSignOut() {
-        GIDSignIn.sharedInstance.signOut()
-    }
-    
-    //MARK: - Check Account and Password
-    func checkBothAcountAndPassword(with account: String, with password: String) -> String {
-        if account == "" && password == "" {
-            return "帳號與密碼皆未填寫"
-        } else if account == "" {
-            return "帳號未填寫"
-        } else if password == "" {
-            return "密碼未填寫"
-        } else {
-            return "完成填寫"
+    //一般登入
+    private func normalLogin(completion: @escaping ((String) -> Void)){
+        authService.userLogin(with: self.inputAccount, password: self.inputPassword) { result in
+            switch result {
+            case .failure(let error):
+                print("error:\(error.localizedDescription)")
+                completion("登入失敗")
+            case .success(_):
+                print("Login succecss")
+                completion("登入成功")
+            }
         }
     }
     
-    func checkAcount(with text: String) -> VerifyState {
-        let standardAcount = "example@mail.com"
-        let seperatedString = standardAcount.components(separatedBy: ".")
-        let isValid = seperatedString.allSatisfy { $0.contains("mail") && $0.contains("com") }
-        let inputSeparatedStrings = text.components(separatedBy: ".")
-        let isInputValid = inputSeparatedStrings.allSatisfy { $0.contains("mail") && $0.contains("com") }
-        return isInputValid ? VerifyState.verify : VerifyState.unverify
+    //google登入
+    private func googleLogin(viewController: UIViewController, completion: @escaping ((String) -> Void)) {
+        GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { user, error in
+            if let error = error {
+                print("Google 登入失敗:\(error.localizedDescription)")
+                completion("登入失敗")
+            }
+            
+            guard let idToken = user?.user.idToken?.tokenString else {
+                print("無法獲取idToken")
+                return
+            }
+            
+            guard let accessToken = user?.user.accessToken.tokenString else {
+                print("無法獲取accessToken")
+                return
+            }
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+            
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    print("Firebase登入失敗：\(error.localizedDescription)")
+                    completion("登入失敗")
+                    return
+                }
+                print("登入成功")
+                completion("登入成功")
+            }
+        }
     }
     
-    func checkPassword(with text: String) -> VerifyState {
-        return text.count < 10 ? VerifyState.unverify : VerifyState.verify
+    //facebook登入
+    func facebookSignIn(with accessToken: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+            self.authService.registerWithCredential(with: credential) { result in
+                switch result {
+                case .success(let result): completion(.success("\(result.description)"))
+                case .failure(let error): completion(.failure(error))
+            }
+        }
     }
 }
-    
-
-         

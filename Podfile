@@ -12,6 +12,8 @@ target 'VolunteerSigniiner' do
   pod 'RxDataSources'
   pod 'SnapKit'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'

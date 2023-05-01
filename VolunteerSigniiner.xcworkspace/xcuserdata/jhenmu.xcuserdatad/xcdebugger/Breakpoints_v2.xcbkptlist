@@ -3,4 +3,166 @@
    uuid = "29A231BC-5695-49EE-AAE9-4B01084A588A"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "734E755C-1DD0-4BE2-B5F3-C00AC1CAD799"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "googleSignUp(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B68A1198-86C7-4154-931E-0516A8B0441C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "googleSignUp(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B68A1198-86C7-4154-931E-0516A8B0441C - 20e9a6676d30f26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VolunteerSigniiner.SignUpViewModel.googleSignUp(with: __C.UIViewController) -&gt; ()"
+                  moduleName = "VolunteerSigniiner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jhenmu/Developer/iOSRepository/VolunteerSigniiner/VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "520">
+               </Location>
+               <Location
+                  uuid = "B68A1198-86C7-4154-931E-0516A8B0441C - 20e9a6676d30f26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VolunteerSigniiner.SignUpViewModel.googleSignUp(with: __C.UIViewController) -&gt; ()"
+                  moduleName = "VolunteerSigniiner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jhenmu/Developer/iOSRepository/VolunteerSigniiner/VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "572">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59095215-9057-4CB4-B87A-2BF328AFF020"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "googleSignUp(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59095215-9057-4CB4-B87A-2BF328AFF020 - 20e9a6676d30cc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VolunteerSigniiner.SignUpViewModel.googleSignUp(with: __C.UIViewController) -&gt; ()"
+                  moduleName = "VolunteerSigniiner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jhenmu/Developer/iOSRepository/VolunteerSigniiner/VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "784">
+               </Location>
+               <Location
+                  uuid = "59095215-9057-4CB4-B87A-2BF328AFF020 - 7ebdfe59f6375884"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in VolunteerSigniiner.SignUpViewModel.googleSignUp(with: __C.UIViewController) -&gt; ()"
+                  moduleName = "VolunteerSigniiner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jhenmu/Developer/iOSRepository/VolunteerSigniiner/VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A79D145-4F2E-4593-B355-378ADA5E1721"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "init()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8A79D145-4F2E-4593-B355-378ADA5E1721 - cd4e550ce0e8b315"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (__C.UIViewController) -&gt; () in VolunteerSigniiner.SignUpViewModel.init() -&gt; VolunteerSigniiner.SignUpViewModel"
+                  moduleName = "VolunteerSigniiner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jhenmu/Developer/iOSRepository/VolunteerSigniiner/VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "8A79D145-4F2E-4593-B355-378ADA5E1721 - 5aeb34c13cee75e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #5 (__C.UIViewController) -&gt; () in VolunteerSigniiner.SignUpViewModel.init() -&gt; VolunteerSigniiner.SignUpViewModel"
+                  moduleName = "VolunteerSigniiner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jhenmu/Developer/iOSRepository/VolunteerSigniiner/VolunteerSigniiner/ViewModel/SignUpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

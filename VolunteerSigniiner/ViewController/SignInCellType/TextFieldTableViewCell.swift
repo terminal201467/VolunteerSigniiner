@@ -19,7 +19,6 @@ class TextFieldTableViewCell: UITableViewCell {
     let inputer: UITextField = {
        let textField = UITextField()
         textField.clearButtonMode = .whileEditing
-        textField.becomeFirstResponder()
         textField.borderStyle = .roundedRect
         return textField
     }()

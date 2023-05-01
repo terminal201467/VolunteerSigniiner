@@ -9,10 +9,32 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.958555679008-89c575dff53fuv5n2r0df4cnvgtkgh04</string>
+				<string>com.googleusercontent.apps.374352474830-7lm73c8s0dsdroi7h08e0ubmhoice2ob</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>859971690847-a958a81nhu95ssf3c85o04j0p2cdkj0k.apps.googleusercontent.com</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb785013353353310</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>785013353353310</string>
+	<key>FacebookClientToken</key>
+	<string>e6c73f124436ac573e9e254b7a566c8d</string>
+	<key>FacebookDisplayName</key>
+	<string>VolunteerSigniiner</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
