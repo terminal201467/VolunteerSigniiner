@@ -22,6 +22,9 @@ class FirebaseAuthService {
     private let dataBase = Database.database()
     
     private lazy var userReference = dataBase.reference(withPath: "users")
+    
+    private let fireStoreDataBase = Firestore.firestore()
+    
     //創建使用者
     func createUser(with email: String, with password: String, completion: @escaping ((String) -> Void)) {
         auth.createUser(withEmail: email, password: password) { authResult, error in
@@ -79,6 +82,34 @@ class FirebaseAuthService {
                 }
             }
             
+        }
+    }
+    
+    func getCurrentUser() -> (uid: String?, email: String?, displayName: String?)? {
+        if let currentUser = Auth.auth().currentUser {
+            let uid = currentUser.uid
+            let email = currentUser.email
+            let displayName = currentUser.displayName
+            return (uid, email, displayName)
+        } else {
+            return nil
+        }
+    }
+    
+    func uploadScanInformation(with name: String, uid: String, email: String) {
+        let timeStamp = Date().timeIntervalSince1970.description
+        var data: [String: Any] = [
+            "email": email,
+            "punchInID": uid,
+            "timeStamp": timeStamp,
+            "userName": name
+        ]
+        fireStoreDataBase.collection("SignInData").addDocument(data: data) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
         }
     }
 }
