@@ -30,6 +30,8 @@ class LoginViewModel {
     
     private let authService = FirebaseAuthService()
     
+    private let accountCheckHelper = AccountCheckHelper()
+    
     private let facebookLoginManager = LoginManager()
     
     private var inputAccount: String = ""
@@ -46,18 +48,21 @@ class LoginViewModel {
         accountInputChanged
             .subscribe(onNext: { text in
             print("Account text:\(text)")
+            self.inputAccount = text
         })
         .disposed(by: disposeBag)
         
         passwordInputChanged
             .subscribe(onNext: { text in
                 print("Password text:\(text)")
+                self.inputPassword = text
             })
             .disposed(by: disposeBag)
         
         loginButtonLoginTapped.subscribe(onNext: { [weak self] in
             self?.normalLogin(completion: { loginResponse in
                 print("loginResponse:\(loginResponse.description)")
+                self?.loginResponse?(loginResponse)
             })
         })
         
@@ -83,15 +88,48 @@ class LoginViewModel {
     }
     
     //一般登入
-    private func normalLogin(completion: @escaping ((String) -> Void)){
-        authService.userLogin(with: self.inputAccount, password: self.inputPassword) { result in
-            switch result {
-            case .failure(let error):
-                print("error:\(error.localizedDescription)")
-                completion("登入失敗")
-            case .success(_):
-                print("Login succecss")
-                completion("登入成功")
+//    private func normalLogin(completion: @escaping ((String) -> Void)){
+//        authService.userLogin(with: self.inputAccount, password: self.inputPassword) { result in
+//            switch result {
+//            case .failure(let error):
+//                print("error:\(error.localizedDescription)")
+//                completion("登入失敗")
+//            case .success(_):
+//                print("Login succecss")
+//                completion("登入成功")
+//            }
+//        }
+//    }
+    
+    private func normalLogin(completion: @escaping (String) -> (Void)) {
+        let fillState = accountCheckHelper.checkBothAcountAndPassword(with: inputAccount, with: inputPassword)
+        switch fillState {
+        case .acountUnfill:
+            print(fillState.text)
+            completion(fillState.text)
+        case .passwordUnfill:
+            print(fillState.text)
+            completion(fillState.text)
+        case .bothUnfill:
+            print(fillState.text)
+            completion(fillState.text)
+        case .fillComplete:
+            print(fillState.text)
+            if accountCheckHelper.checkAccount(with: inputAccount) == .unverify {
+                print(accountCheckHelper.checkAccount(with: inputAccount).acountVerify)
+            } else if accountCheckHelper.checkPassword(with: inputPassword) == .unverify {
+                print(accountCheckHelper.checkPassword(with: inputPassword).passwordVerify)
+            } else {
+                authService.userLogin(with: self.inputAccount, password: self.inputPassword) { result in
+                    switch result {
+                    case .failure(let error):
+                        print("error:\(error.localizedDescription)")
+                        completion("登入失敗")
+                    case .success(let message):
+                        print("Login succecss:\(message)")
+                        completion("登入成功")
+                    }
+                }
             }
         }
     }

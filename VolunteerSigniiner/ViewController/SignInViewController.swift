@@ -115,6 +115,10 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
                 //一般註冊
                 cell.selectionStyle = .none
                 cell.configure(with: .normalSignUp)
+                cell.normalLoginTapSubject.subscribe(onNext: {
+                    self.viewModel.loginButtonLoginTapped.onNext(())
+                })
+                .disposed(by: self.disposeBag)
                 return cell
             }
         }
