@@ -12,8 +12,6 @@
                 <outlet property="closeButton" destination="Jic-tG-jrc" id="xVJ-gX-Ryh"/>
                 <outlet property="hintView" destination="trc-oY-Fin" id="Ifi-e6-dL0"/>
                 <outlet property="scanView" destination="Ghq-re-AtU" id="sj6-B0-Aku"/>
-                <outlet property="scanedInformation" destination="mFO-0w-UyI" id="daC-3d-BsC"/>
-                <outlet property="sendButton" destination="ed4-n1-oep" id="NLo-QU-7RK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,27 +46,11 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFO-0w-UyI" userLabel="ScanedInformation">
-                                    <rect key="frame" x="175.66666666666666" y="93" width="42" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ed4-n1-oep" userLabel="SendButton">
-                                    <rect key="frame" x="150" y="144" width="93.333333333333314" height="58"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="確認登入"/>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="opc-Wh-0cK" firstAttribute="top" secondItem="trc-oY-Fin" secondAttribute="top" constant="50" id="03c-2y-8Pe"/>
-                                <constraint firstItem="mFO-0w-UyI" firstAttribute="centerX" secondItem="trc-oY-Fin" secondAttribute="centerX" id="0qc-iR-5FB"/>
                                 <constraint firstItem="opc-Wh-0cK" firstAttribute="centerX" secondItem="trc-oY-Fin" secondAttribute="centerX" id="8Fo-mo-ybH"/>
-                                <constraint firstItem="mFO-0w-UyI" firstAttribute="bottom" secondItem="opc-Wh-0cK" secondAttribute="bottom" constant="40" id="KkO-Au-PkT"/>
-                                <constraint firstItem="ed4-n1-oep" firstAttribute="top" secondItem="mFO-0w-UyI" secondAttribute="bottom" constant="30" id="T55-fw-ESO"/>
-                                <constraint firstAttribute="bottom" secondItem="ed4-n1-oep" secondAttribute="bottom" constant="50" id="Z8s-dt-1Xb"/>
-                                <constraint firstItem="ed4-n1-oep" firstAttribute="centerX" secondItem="trc-oY-Fin" secondAttribute="centerX" id="p7X-VY-bUV"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -99,13 +81,6 @@
             </constraints>
             <point key="canvasLocation" x="127" y="21"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rxI-XM-EYo" userLabel="ReturnButton">
-            <rect key="frame" x="0.0" y="0.0" width="75" height="35"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" title="Button"/>
-            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-            <point key="canvasLocation" x="-1964" y="-640"/>
-        </button>
     </objects>
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>

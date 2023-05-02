@@ -19,22 +19,19 @@ class ScanViewController: UIViewController {
     
     @IBOutlet var closeButton: UIButton!
     
-    @IBOutlet var scanedInformation: UILabel!
-    
-    @IBOutlet var sendButton: UIButton!
-    
     private let disposeBag = DisposeBag()
     
     private var captureSession: AVCaptureSession?
     
     private var previewLayer: AVCaptureVideoPreviewLayer?
+    
+    private let fireBaseAuthService = FirebaseAuthService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setCapture()
         setPreviewLayer()
         setCloseButtonSubscribe()
-        setSendButtonSubscribe()
     }
     
     private func setCapture() {
@@ -51,7 +48,6 @@ class ScanViewController: UIViewController {
         if ((captureSession?.canAddInput(videoInput)) != nil) {
             captureSession?.addInput(videoInput)
         } else {
-            //設置無法開啟攝像頭的時候，彈出提示
             print("無法開啟攝像頭")
             return
         }
@@ -62,7 +58,6 @@ class ScanViewController: UIViewController {
             metadataOutput.setMetadataObjectsDelegate(self, queue: .main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-            //如果沒有抓到的話可能要報錯，需要設計一下
             print("無法掃描QRCode")
             return
         }
@@ -86,17 +81,12 @@ class ScanViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setSendButtonSubscribe() {
-        sendButton.rx.tap
-            .subscribe(onNext: {
-                //送出到Firebase
-                self.dismiss(animated: true)
-            })
-            .disposed(by: disposeBag)
-    }
-    
     private func found(code: String) {
         print("code:\(code)")
+        //上傳到FireStore上
+        
+        //需要檢查有沒有掃過了（檢查時間大概抓上午一次）
+            //如果掃過了，就跳掃描過了Alert
         
     }
     

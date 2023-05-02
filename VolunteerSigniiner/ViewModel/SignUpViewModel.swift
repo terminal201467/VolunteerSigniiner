@@ -48,10 +48,6 @@ class SignUpViewModel {
     //MARK: - UI
     let loginButtonLoginTapped = PublishSubject<Void>()
     
-    let googleSignInTapped = PublishSubject<UIViewController>()
-    
-    let facebookSignInTapped = PublishSubject<UIViewController>()
-    
     let accountInputChanged = BehaviorRelay<String>(value: "")
     
     let passwordInputChanged = BehaviorRelay<String>(value: "")
@@ -83,18 +79,6 @@ class SignUpViewModel {
         loginButtonLoginTapped.subscribe { [weak self] in
             self?.normalSignUp()
         }
-        
-        googleSignInTapped.subscribe(onNext: { viewController in
-            self.googleSignUp(with: viewController)
-        })
-        .disposed(by: disposeBag)
-        
-        facebookSignInTapped.subscribe(onNext: { viewController in
-            self.facebookSignUp(from: viewController) { result in
-                print("reault:\(result))")
-            }
-        })
-        .disposed(by: disposeBag)
     }
     
     func normalSignUp() {
@@ -102,31 +86,6 @@ class SignUpViewModel {
             print("response:\(response.description)")
         }
     }
-    
-    func facebookSignUp(from viewController: UIViewController, completion: @escaping (Result<String, Error>) -> Void) {
-        facebookLoginManager.logIn(permissions: ["public_profile", "email"], from: viewController) { [weak self] result, error in
-            guard let self = self else { return }
-            
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let token = result?.token else {
-                completion(.failure(AuthError.unknown))
-                return
-            }
-            
-            let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
-            self.authService.registerWithCredential(with: credential) { result in
-                switch result {
-                case .success(let result): completion(.success("result:\(result.description)"))
-                case .failure(let error): completion(.failure(error))
-                }
-            }
-        }
-    }
-
     
     func googleSignUp(with viewController: UIViewController) {
         GIDSignIn.sharedInstance.signIn(withPresenting: viewController)
