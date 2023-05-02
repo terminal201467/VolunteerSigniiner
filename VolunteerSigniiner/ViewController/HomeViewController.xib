@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="helloAndNameLabel" destination="N3e-0t-Zto" id="IdL-IA-IwY"/>
                 <outlet property="logOutButton" destination="vaf-tZ-Gxs" id="vDE-NR-8BZ"/>
+                <outlet property="openCamaraButton" destination="tQA-AO-PIf" id="yuN-LA-p7t"/>
                 <outlet property="qrCodeImage" destination="fUo-Ma-4bn" id="I8v-g8-Uot"/>
                 <outlet property="reloadButton" destination="dVg-jh-MT1" id="qKf-8t-CBr"/>
                 <outlet property="scanHintLabel" destination="QJV-hA-q3t" id="xTC-q9-fhG"/>
@@ -47,12 +48,19 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQA-AO-PIf" userLabel="OpenCamaraButton">
+                    <rect key="frame" x="159" y="523" width="75" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fUo-Ma-4bn" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.28169" id="1Ui-G6-ikr"/>
                 <constraint firstItem="vaf-tZ-Gxs" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0410798" id="3Im-7x-b44"/>
                 <constraint firstAttribute="bottom" secondItem="vaf-tZ-Gxs" secondAttribute="bottom" constant="89" id="9WO-sM-137"/>
+                <constraint firstItem="tQA-AO-PIf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ec1-MO-SCJ"/>
+                <constraint firstItem="tQA-AO-PIf" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0410798" id="F84-Ao-f7y"/>
                 <constraint firstItem="fUo-Ma-4bn" firstAttribute="top" secondItem="N3e-0t-Zto" secondAttribute="bottom" constant="20" id="GNW-Bc-6sH"/>
                 <constraint firstItem="N3e-0t-Zto" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.056338" id="J1w-IA-cfQ"/>
                 <constraint firstItem="dVg-jh-MT1" firstAttribute="centerX" secondItem="fUo-Ma-4bn" secondAttribute="centerX" id="K0A-ym-VSh"/>
@@ -64,6 +72,7 @@
                 <constraint firstItem="QJV-hA-q3t" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="moM-7K-LDb"/>
                 <constraint firstItem="vaf-tZ-Gxs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pYF-fU-JUN"/>
                 <constraint firstItem="QJV-hA-q3t" firstAttribute="top" secondItem="fUo-Ma-4bn" secondAttribute="bottom" constant="30" id="pa0-cW-DJ9"/>
+                <constraint firstItem="tQA-AO-PIf" firstAttribute="bottom" secondItem="QJV-hA-q3t" secondAttribute="bottom" constant="40" id="uYz-ao-htZ"/>
             </constraints>
             <point key="canvasLocation" x="100" y="21"/>
         </view>

@@ -20,6 +20,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var scanHintLabel: UILabel!
     
+    @IBOutlet var openCamaraButton: UIButton!
+    
     @IBOutlet var logOutButton: UIButton!
     
     private let firebaseAuth = FirebaseAuthService()
@@ -36,13 +38,7 @@ class HomeViewController: UIViewController {
         setReloadButton()
         setScanHint()
         setLogOutButton()
-        print(
-            """
-            \(firebaseAuth.getCurrentUser()?.uid),
-            \(firebaseAuth.getCurrentUser()?.email),
-            \(firebaseAuth.getCurrentUser()?.displayName)
-            """
-            )
+        setOpenCamaraButton()
     }
     
     private func setReloadButton() {
@@ -90,6 +86,20 @@ class HomeViewController: UIViewController {
         logOutButton.rx.tap
             .subscribe(onNext: {
                 self.navigationController?.popViewController(animated: true)
+                //實際登出Google帳號或Facebook帳號
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setOpenCamaraButton() {
+        openCamaraButton.setImage(UIImage(systemName: "camara"), for: .normal)
+        openCamaraButton.setTitle("打開相機掃描", for: .normal)
+        openCamaraButton.rx.tap
+            .subscribe(onNext: {
+                //跳轉到相機頁面。
+                self.modalPresentationStyle = .overFullScreen
+                let scanViewController = ScanViewController()
+                self.present(scanViewController, animated: true)
             })
             .disposed(by: disposeBag)
     }

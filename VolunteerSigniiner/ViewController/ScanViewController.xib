@@ -1,22 +1,116 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController" customModule="VolunteerSigniiner" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="Jic-tG-jrc" id="xVJ-gX-Ryh"/>
+                <outlet property="hintView" destination="trc-oY-Fin" id="Ifi-e6-dL0"/>
+                <outlet property="scanView" destination="Ghq-re-AtU" id="sj6-B0-Aku"/>
+                <outlet property="scanedInformation" destination="mFO-0w-UyI" id="daC-3d-BsC"/>
+                <outlet property="sendButton" destination="ed4-n1-oep" id="NLo-QU-7RK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="En5-Qb-Kqe" userLabel="CamaraView">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghq-re-AtU" userLabel="ScanView">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jic-tG-jrc" userLabel="CloseButton">
+                                    <rect key="frame" x="20" y="65" width="35" height="35"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="Jic-tG-jrc" firstAttribute="top" secondItem="Ghq-re-AtU" secondAttribute="top" constant="65" id="E7p-xQ-fIw"/>
+                                <constraint firstItem="Jic-tG-jrc" firstAttribute="leading" secondItem="Ghq-re-AtU" secondAttribute="leading" constant="20" symbolic="YES" id="jIg-3f-rg6"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trc-oY-Fin" userLabel="HintView">
+                            <rect key="frame" x="0.0" y="600" width="393" height="252"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="掃描QRcode快速登入" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opc-Wh-0cK" userLabel="HintLabel">
+                                    <rect key="frame" x="100.00000000000001" y="50" width="193.33333333333337" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFO-0w-UyI" userLabel="ScanedInformation">
+                                    <rect key="frame" x="175.66666666666666" y="93" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ed4-n1-oep" userLabel="SendButton">
+                                    <rect key="frame" x="150" y="144" width="93.333333333333314" height="58"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="確認登入"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="opc-Wh-0cK" firstAttribute="top" secondItem="trc-oY-Fin" secondAttribute="top" constant="50" id="03c-2y-8Pe"/>
+                                <constraint firstItem="mFO-0w-UyI" firstAttribute="centerX" secondItem="trc-oY-Fin" secondAttribute="centerX" id="0qc-iR-5FB"/>
+                                <constraint firstItem="opc-Wh-0cK" firstAttribute="centerX" secondItem="trc-oY-Fin" secondAttribute="centerX" id="8Fo-mo-ybH"/>
+                                <constraint firstItem="mFO-0w-UyI" firstAttribute="bottom" secondItem="opc-Wh-0cK" secondAttribute="bottom" constant="40" id="KkO-Au-PkT"/>
+                                <constraint firstItem="ed4-n1-oep" firstAttribute="top" secondItem="mFO-0w-UyI" secondAttribute="bottom" constant="30" id="T55-fw-ESO"/>
+                                <constraint firstAttribute="bottom" secondItem="ed4-n1-oep" secondAttribute="bottom" constant="50" id="Z8s-dt-1Xb"/>
+                                <constraint firstItem="ed4-n1-oep" firstAttribute="centerX" secondItem="trc-oY-Fin" secondAttribute="centerX" id="p7X-VY-bUV"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Ghq-re-AtU" firstAttribute="top" secondItem="En5-Qb-Kqe" secondAttribute="top" id="Jbs-ka-kfq"/>
+                        <constraint firstItem="trc-oY-Fin" firstAttribute="leading" secondItem="En5-Qb-Kqe" secondAttribute="leading" id="JyP-TU-ycc"/>
+                        <constraint firstAttribute="trailing" secondItem="trc-oY-Fin" secondAttribute="trailing" id="KV0-tf-jZa"/>
+                        <constraint firstAttribute="bottom" secondItem="trc-oY-Fin" secondAttribute="bottom" id="Lsi-MP-df0"/>
+                        <constraint firstItem="trc-oY-Fin" firstAttribute="top" secondItem="Ghq-re-AtU" secondAttribute="bottom" id="NRf-P3-CCa"/>
+                        <constraint firstItem="Ghq-re-AtU" firstAttribute="leading" secondItem="En5-Qb-Kqe" secondAttribute="leading" id="PTm-39-2oc"/>
+                        <constraint firstAttribute="trailing" secondItem="Ghq-re-AtU" secondAttribute="trailing" id="luD-Ta-h9g"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="En5-Qb-Kqe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0d2-Xo-qsK"/>
+                <constraint firstItem="Ghq-re-AtU" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="B3W-AF-3ut"/>
+                <constraint firstItem="Jic-tG-jrc" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.0890585" id="CFM-Z1-7gn"/>
+                <constraint firstItem="trc-oY-Fin" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.295775" id="GrH-ZM-aJ6"/>
+                <constraint firstItem="Ghq-re-AtU" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.704225" id="L29-Lf-Rk0"/>
+                <constraint firstAttribute="bottom" secondItem="En5-Qb-Kqe" secondAttribute="bottom" id="Tv5-tv-afo"/>
+                <constraint firstItem="trc-oY-Fin" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="acg-Ix-DUK"/>
+                <constraint firstItem="En5-Qb-Kqe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ba0-QL-rpo"/>
+                <constraint firstAttribute="trailing" secondItem="En5-Qb-Kqe" secondAttribute="trailing" id="kuG-v0-DjG"/>
+                <constraint firstItem="Jic-tG-jrc" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0410798" id="tci-5L-Nsz"/>
+            </constraints>
+            <point key="canvasLocation" x="127" y="21"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rxI-XM-EYo" userLabel="ReturnButton">
+            <rect key="frame" x="0.0" y="0.0" width="75" height="35"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button"/>
+            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+            <point key="canvasLocation" x="-1964" y="-640"/>
+        </button>
     </objects>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

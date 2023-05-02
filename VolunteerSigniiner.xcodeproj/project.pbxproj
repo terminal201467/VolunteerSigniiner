@@ -34,6 +34,8 @@
 		976AD09A29FF8BAC0026E6F8 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */; };
 		976AD09B29FF8BAC0026E6F8 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */; };
 		976AD09D29FFA26F0026E6F8 /* MemberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09C29FFA26F0026E6F8 /* MemberManager.swift */; };
+		976AD0A029FFA6E00026E6F8 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09E29FFA6E00026E6F8 /* ManagerViewController.swift */; };
+		976AD0A129FFA6E00026E6F8 /* ManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD09F29FFA6E00026E6F8 /* ManagerViewController.xib */; };
 		977558DA29E4F7DE00079908 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977558D929E4F7DE00079908 /* FirebaseAuthService.swift */; };
 		97B39AA029E64AA5004900FF /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B39A9F29E64AA5004900FF /* GoogleSignInViewController.swift */; };
 		CA1E360F97DF926F6F040228 /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B76B1C476E1D9CE36D7A17D /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework */; };
@@ -96,6 +98,8 @@
 		976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
 		976AD09C29FFA26F0026E6F8 /* MemberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManager.swift; sourceTree = "<group>"; };
+		976AD09E29FFA6E00026E6F8 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
+		976AD09F29FFA6E00026E6F8 /* ManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagerViewController.xib; sourceTree = "<group>"; };
 		977558D929E4F7DE00079908 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		97B39A9F29E64AA5004900FF /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		AC814D6E22C0BAFD86D4F7DA /* Pods-VolunteerSigniinerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolunteerSigniinerTests.release.xcconfig"; path = "Target Support Files/Pods-VolunteerSigniinerTests/Pods-VolunteerSigniinerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				976AD09229FB4E840026E6F8 /* HomeViewController.xib */,
 				976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */,
 				976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */,
+				976AD09E29FFA6E00026E6F8 /* ManagerViewController.swift */,
+				976AD09F29FFA6E00026E6F8 /* ManagerViewController.xib */,
 				970DF08429D934B7007A8CDA /* SignInCellType */,
 			);
 			path = ViewController;
@@ -387,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				976AD0A129FFA6E00026E6F8 /* ManagerViewController.xib in Resources */,
 				9755366729D92EBA00564024 /* LaunchScreen.storyboard in Resources */,
 				976ACDDB29ED1B5200FF056B /* client_859971690847-a958a81nhu95ssf3c85o04j0p2cdkj0k.apps.googleusercontent.com.plist in Resources */,
 				976AD08B29F7740F0026E6F8 /* LoginViewController.xib in Resources */,
@@ -534,6 +541,7 @@
 				976AD09029FA02270026E6F8 /* Model.swift in Sources */,
 				976AD09629FB61400026E6F8 /* QRCodeService.swift in Sources */,
 				9755369229D930E800564024 /* SignInViewController.swift in Sources */,
+				976AD0A029FFA6E00026E6F8 /* ManagerViewController.swift in Sources */,
 				970DF08B29D93529007A8CDA /* ButtonTableViewCell.swift in Sources */,
 				976AD08D29F77E510026E6F8 /* LoginViewModel.swift in Sources */,
 				97B39AA029E64AA5004900FF /* GoogleSignInViewController.swift in Sources */,
