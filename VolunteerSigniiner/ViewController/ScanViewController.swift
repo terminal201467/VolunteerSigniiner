@@ -81,10 +81,15 @@ class ScanViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func found(code: String) {
-        print("code:\(code)")
+    private func found(UID: String) {
+        print("UID:\(UID)")
         //上傳到FireStore上
+        let name = fireBaseAuthService.getCurrentUser()?.displayName ?? ""
+        let email = fireBaseAuthService.getCurrentUser()?.email ?? ""
+        //上傳
+        fireBaseAuthService.uploadScanInformation(name: name, uid: UID, email: email, identity: "")
         
+        //檢查有沒有重複
         //需要檢查有沒有掃過了（檢查時間大概抓上午一次）
             //如果掃過了，就跳掃描過了Alert
         
@@ -99,7 +104,7 @@ extension ScanViewController: AVCaptureMetadataOutputObjectsDelegate {
         if let readableObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
             let stringValue = readableObject.stringValue {
                 AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                found(code: stringValue)
+                found(UID: stringValue)
         }
         dismiss(animated: true)
     }

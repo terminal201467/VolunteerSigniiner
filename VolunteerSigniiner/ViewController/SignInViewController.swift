@@ -62,19 +62,6 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
         navigationItem.hidesBackButton = true
     }
     
-//    private func setButton() {
-//        alreadyHaveButton.setTitle("已經有帳戶了嗎？點擊這裡直接登入", for: .normal)
-//        alreadyHaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-//        alreadyHaveButton.setTitleColor(.brown, for: .normal)
-//        alreadyHaveButton.rx.tap
-//            .subscribe(onNext: {
-//                print("Button tappped!")
-//                let loginViewController = LoginViewController()
-//                self.navigationController?.pushViewController(loginViewController, animated: true)
-//            })
-//            .disposed(by: disposeBag)
-//    }
-    
     private func setTable() {
         table.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.reuseIdentifier)
         table.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.reuseIdentifier)

@@ -28,8 +28,4 @@ class QRCodeService {
         return nil
     }
     
-//    func scanQRCode() -> String {
-//
-//    }
-    
 }

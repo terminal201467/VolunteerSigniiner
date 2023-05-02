@@ -85,8 +85,8 @@ class HomeViewController: UIViewController {
         logOutButton.setTitle("登出", for: .normal)
         logOutButton.rx.tap
             .subscribe(onNext: {
+                self.firebaseAuth.signOutFirebaseAuth()
                 self.navigationController?.popViewController(animated: true)
-                //實際登出Google帳號或Facebook帳號
             })
             .disposed(by: disposeBag)
     }

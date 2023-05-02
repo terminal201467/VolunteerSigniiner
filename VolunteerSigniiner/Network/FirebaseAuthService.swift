@@ -11,7 +11,6 @@ import Firebase
 import GoogleSignIn
 import FirebaseDatabase
 import FirebaseCore
-import FirebaseFirestore
 
 
 
@@ -22,8 +21,6 @@ class FirebaseAuthService {
     private let dataBase = Database.database()
     
     private lazy var userReference = dataBase.reference(withPath: "users")
-    
-    private let fireStoreDataBase = Firestore.firestore()
     
     //創建使用者
     func createUser(with email: String, with password: String, completion: @escaping ((String) -> Void)) {
@@ -41,16 +38,16 @@ class FirebaseAuthService {
             guard let uid = authResult?.user.uid else {
                 return
             }
-            self.userReference.queryOrdered(byChild: "email").queryEqual(toValue: email)
-                .observeSingleEvent(of: .value) { snapShot, text in
-                    if snapShot.exists() {
-                        return
-                    }
-                    let name = snapShot.childSnapshot(forPath: "name").value as? String
-                    let email = snapShot.childSnapshot(forPath: "email").value as? String
-                    let user = User(name: name ?? "", email: email ?? "")
-                    self.userReference.child(uid).setValue(user)
-            }
+//            self.userReference.queryOrdered(byChild: "email").queryEqual(toValue: email)
+//                .observeSingleEvent(of: .value) { snapShot, text in
+//                    if snapShot.exists() {
+//                        return
+//                    }
+//                    let name = snapShot.childSnapshot(forPath: "name").value as? String
+//                    let email = snapShot.childSnapshot(forPath: "email").value as? String
+//                    let user = User(name: name ?? "", email: email ?? "")
+//                    self.userReference.child(uid).setValue(user)
+//            }
         }
     }
     
@@ -85,6 +82,14 @@ class FirebaseAuthService {
         }
     }
     
+    func signOutFirebaseAuth() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+    
     func getCurrentUser() -> (uid: String?, email: String?, displayName: String?)? {
         if let currentUser = Auth.auth().currentUser {
             let uid = currentUser.uid
@@ -96,20 +101,4 @@ class FirebaseAuthService {
         }
     }
     
-    func uploadScanInformation(with name: String, uid: String, email: String) {
-        let timeStamp = Date().timeIntervalSince1970.description
-        var data: [String: Any] = [
-            "email": email,
-            "punchInID": uid,
-            "timeStamp": timeStamp,
-            "userName": name
-        ]
-        fireStoreDataBase.collection("SignInData").addDocument(data: data) { error in
-            if let error = error {
-                print("Error writing document: \(error)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
-    }
 }

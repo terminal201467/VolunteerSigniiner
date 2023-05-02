@@ -11,4 +11,8 @@ struct User {
     
     var name: String
     var email: String
+    var gender: String
+    var identity: String
+    var UID: String
+    
 }
