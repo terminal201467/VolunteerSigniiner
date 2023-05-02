@@ -17,6 +17,7 @@ enum SignUpCellType {
     case acountInputer(textVariable: BehaviorRelay<String>)
     case passwordInputer(textVariable: BehaviorRelay<String>)
     case signInButton
+    case alreadyHaveButton
 }
 
 
@@ -40,7 +41,8 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
     private lazy var cellType:[SignUpCellType] = [.title("SignIn"),
                                .acountInputer(textVariable: viewModel.accountInputChanged),
                                .passwordInputer(textVariable: viewModel.passwordInputChanged),
-                               .signInButton]
+                               .signInButton,
+                               .alreadyHaveButton]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +122,16 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
                 })
                 .disposed(by: self.disposeBag)
                 return cell
+            case .alreadyHaveButton:
+                let cell = tableView.dequeueReusableCell(withIdentifier: ButtonTableViewCell.reuseIdentifier, for: indexPath) as! ButtonTableViewCell
+                //一般註冊
+                cell.selectionStyle = .none
+                cell.configure(with: .alreadyHaveLeave)
+                cell.normalLoginTapSubject.subscribe(onNext: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+                .disposed(by: self.disposeBag)
+                return cell
             }
         }
         
@@ -127,18 +139,6 @@ class SignInViewController: UIViewController, UIScrollViewDelegate {
             .map { [SectionModel(model: (), items: $0)] }
             .bind(to: table.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-        table.rx.itemSelected
-            .subscribe(onNext: { indexPath in
-                let sectionModel = dataSource.sectionModels[indexPath.section]
-                let cellType = sectionModel.items[indexPath.row]
-                switch cellType {
-                case .title: return
-                case .acountInputer: return
-                case .passwordInputer: return
-                case .signInButton: self.viewModel.loginButtonLoginTapped.onNext(())
-                }
-            })
     }
     
     private func autoLayout() {

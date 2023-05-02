@@ -14,7 +14,7 @@ import FBSDKLoginKit
 import GoogleSignIn
 
 enum LoginType: Int, CaseIterable {
-    case normalSignUp = 0, GooleSignUp, FacebookSignUp, normalLogin, GooleLogin, FacebookLogin
+    case normalSignUp = 0, GooleSignUp, FacebookSignUp, normalLogin, GooleLogin, FacebookLogin, alreadyHaveLeave
     var text: String {
         switch self {
         case .normalSignUp: return "一般註冊"
@@ -23,6 +23,7 @@ enum LoginType: Int, CaseIterable {
         case .normalLogin: return "一般登入"
         case .GooleLogin: return "Google登入"
         case .FacebookLogin: return "Facebooke登入"
+        case .alreadyHaveLeave: return "已註冊，回登入頁"
         }
     }
     var icon: String {
@@ -33,6 +34,7 @@ enum LoginType: Int, CaseIterable {
         case .normalLogin: return ""
         case .GooleSignUp: return "google"
         case .FacebookSignUp: return "facebook"
+        case .alreadyHaveLeave: return ""
         }
     }
 }
@@ -157,6 +159,13 @@ class ButtonTableViewCell: UITableViewCell {
             facebookLoginButton.isHidden = false
             googleLoginButton.isHidden = true
             loginButton.isHidden = true
+        case .alreadyHaveLeave:
+            googleLoginButton.isHidden = true
+            facebookLoginButton.isHidden = true
+            loginButton.isHidden = false
+            loginButton.setTitle(type.text, for: .normal)
+            loginButton.setTitleColor(.white, for: .normal)
+            loginButton.backgroundColor = .orange
         }
     }
 }
