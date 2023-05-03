@@ -26,6 +26,8 @@ class ScanViewController: UIViewController {
     private var previewLayer: AVCaptureVideoPreviewLayer?
     
     private let fireBaseAuthService = FirebaseAuthService()
+    
+    private let firestoreDatabase = FirestoreDatabase()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,16 +84,12 @@ class ScanViewController: UIViewController {
     }
     
     private func found(UID: String) {
-        print("UID:\(UID)")
-        //上傳到FireStore上
         let name = fireBaseAuthService.getCurrentUser()?.displayName ?? ""
         let email = fireBaseAuthService.getCurrentUser()?.email ?? ""
-        //上傳
-        fireBaseAuthService.uploadScanInformation(name: name, uid: UID, email: email, identity: "")
+
         
-        //檢查有沒有重複
-        //需要檢查有沒有掃過了（檢查時間大概抓上午一次）
-            //如果掃過了，就跳掃描過了Alert
+        firestoreDatabase.uploadScanInformation(name: name, uid: UID, email: email, identity: "志工")
+        
         
     }
     

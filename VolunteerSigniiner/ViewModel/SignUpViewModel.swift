@@ -45,14 +45,12 @@ class SignUpViewModel {
     init() {
         accountInputChanged
             .subscribe(onNext: { text in
-            print("Account text:\(text)")
                 self.inputAccount = text
         })
         .disposed(by: disposeBag)
         
         passwordInputChanged
             .subscribe(onNext: { text in
-                print("Password text:\(text)")
                 self.inputPassword = text
             })
             .disposed(by: disposeBag)

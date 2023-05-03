@@ -28,8 +28,8 @@
 		976AD08B29F7740F0026E6F8 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD08929F7740F0026E6F8 /* LoginViewController.xib */; };
 		976AD08D29F77E510026E6F8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD08C29F77E510026E6F8 /* LoginViewModel.swift */; };
 		976AD09029FA02270026E6F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD08F29FA02270026E6F8 /* Model.swift */; };
-		976AD09329FB4E840026E6F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09129FB4E840026E6F8 /* HomeViewController.swift */; };
-		976AD09429FB4E840026E6F8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD09229FB4E840026E6F8 /* HomeViewController.xib */; };
+		976AD09329FB4E840026E6F8 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09129FB4E840026E6F8 /* QRCodeViewController.swift */; };
+		976AD09429FB4E840026E6F8 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD09229FB4E840026E6F8 /* QRCodeViewController.xib */; };
 		976AD09629FB61400026E6F8 /* QRCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09529FB61400026E6F8 /* QRCodeService.swift */; };
 		976AD09A29FF8BAC0026E6F8 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */; };
 		976AD09B29FF8BAC0026E6F8 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */; };
@@ -39,8 +39,10 @@
 		976AD0A32A00E0840026E6F8 /* AccountCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0A22A00E0840026E6F8 /* AccountCheckHelper.swift */; };
 		976AD0A52A00F5DF0026E6F8 /* FirestoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0A42A00F5DE0026E6F8 /* FirestoreDatabase.swift */; };
 		976AD0A72A0104D50026E6F8 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0A62A0104D50026E6F8 /* LoginManager.swift */; };
+		976AD0AA2A020BFA0026E6F8 /* VolunteerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0A82A020BFA0026E6F8 /* VolunteerViewController.swift */; };
+		976AD0AB2A020BFA0026E6F8 /* VolunteerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD0A92A020BFA0026E6F8 /* VolunteerViewController.xib */; };
+		976AD0AD2A0232A00026E6F8 /* TimeCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0AC2A0232A00026E6F8 /* TimeCheckHelper.swift */; };
 		977558DA29E4F7DE00079908 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977558D929E4F7DE00079908 /* FirebaseAuthService.swift */; };
-		97B39AA029E64AA5004900FF /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B39A9F29E64AA5004900FF /* GoogleSignInViewController.swift */; };
 		CA1E360F97DF926F6F040228 /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B76B1C476E1D9CE36D7A17D /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework */; };
 		E86E9C26D5DC0EB7F144B243 /* Pods_VolunteerSigniinerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD962002A2D4E2B74C923AD /* Pods_VolunteerSigniinerTests.framework */; };
 /* End PBXBuildFile section */
@@ -94,8 +96,8 @@
 		976AD08929F7740F0026E6F8 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		976AD08C29F77E510026E6F8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		976AD08F29FA02270026E6F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		976AD09129FB4E840026E6F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		976AD09229FB4E840026E6F8 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		976AD09129FB4E840026E6F8 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		976AD09229FB4E840026E6F8 /* QRCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
 		976AD09529FB61400026E6F8 /* QRCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeService.swift; sourceTree = "<group>"; };
 		976AD09729FE05CB0026E6F8 /* VolunteerSigniiner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VolunteerSigniiner.entitlements; sourceTree = "<group>"; };
 		976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -106,8 +108,10 @@
 		976AD0A22A00E0840026E6F8 /* AccountCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCheckHelper.swift; sourceTree = "<group>"; };
 		976AD0A42A00F5DE0026E6F8 /* FirestoreDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDatabase.swift; sourceTree = "<group>"; };
 		976AD0A62A0104D50026E6F8 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		976AD0A82A020BFA0026E6F8 /* VolunteerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerViewController.swift; sourceTree = "<group>"; };
+		976AD0A92A020BFA0026E6F8 /* VolunteerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VolunteerViewController.xib; sourceTree = "<group>"; };
+		976AD0AC2A0232A00026E6F8 /* TimeCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCheckHelper.swift; sourceTree = "<group>"; };
 		977558D929E4F7DE00079908 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
-		97B39A9F29E64AA5004900FF /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		AC814D6E22C0BAFD86D4F7DA /* Pods-VolunteerSigniinerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolunteerSigniinerTests.release.xcconfig"; path = "Target Support Files/Pods-VolunteerSigniinerTests/Pods-VolunteerSigniinerTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3EB77497218A2109F78249C /* Pods-VolunteerSigniiner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolunteerSigniiner.debug.xcconfig"; path = "Target Support Files/Pods-VolunteerSigniiner/Pods-VolunteerSigniiner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,15 +232,16 @@
 				9755365E29D92EB900564024 /* ViewController.swift */,
 				9755369029D930E800564024 /* SignInViewController.swift */,
 				9755369129D930E800564024 /* SignInViewController.xib */,
-				97B39A9F29E64AA5004900FF /* GoogleSignInViewController.swift */,
 				976AD08829F7740F0026E6F8 /* LoginViewController.swift */,
 				976AD08929F7740F0026E6F8 /* LoginViewController.xib */,
-				976AD09129FB4E840026E6F8 /* HomeViewController.swift */,
-				976AD09229FB4E840026E6F8 /* HomeViewController.xib */,
-				976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */,
-				976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */,
+				976AD0A82A020BFA0026E6F8 /* VolunteerViewController.swift */,
+				976AD0A92A020BFA0026E6F8 /* VolunteerViewController.xib */,
 				976AD09E29FFA6E00026E6F8 /* ManagerViewController.swift */,
 				976AD09F29FFA6E00026E6F8 /* ManagerViewController.xib */,
+				976AD09129FB4E840026E6F8 /* QRCodeViewController.swift */,
+				976AD09229FB4E840026E6F8 /* QRCodeViewController.xib */,
+				976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */,
+				976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */,
 				970DF08429D934B7007A8CDA /* SignInCellType */,
 			);
 			path = ViewController;
@@ -255,6 +260,7 @@
 				9755368E29D92F3900564024 /* SignUpViewModel.swift */,
 				976AD08C29F77E510026E6F8 /* LoginViewModel.swift */,
 				976AD0A22A00E0840026E6F8 /* AccountCheckHelper.swift */,
+				976AD0AC2A0232A00026E6F8 /* TimeCheckHelper.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -403,13 +409,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				976AD0A129FFA6E00026E6F8 /* ManagerViewController.xib in Resources */,
+				976AD0AB2A020BFA0026E6F8 /* VolunteerViewController.xib in Resources */,
 				9755366729D92EBA00564024 /* LaunchScreen.storyboard in Resources */,
 				976ACDDB29ED1B5200FF056B /* client_859971690847-a958a81nhu95ssf3c85o04j0p2cdkj0k.apps.googleusercontent.com.plist in Resources */,
 				976AD08B29F7740F0026E6F8 /* LoginViewController.xib in Resources */,
 				976AD09B29FF8BAC0026E6F8 /* ScanViewController.xib in Resources */,
 				9755369329D930E800564024 /* SignInViewController.xib in Resources */,
 				9755366429D92EBA00564024 /* Assets.xcassets in Resources */,
-				976AD09429FB4E840026E6F8 /* HomeViewController.xib in Resources */,
+				976AD09429FB4E840026E6F8 /* QRCodeViewController.xib in Resources */,
 				976ACDDD29ED1FC100FF056B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,14 +548,16 @@
 				977558DA29E4F7DE00079908 /* FirebaseAuthService.swift in Sources */,
 				970DF08F29D9354F007A8CDA /* TitleTableViewCell.swift in Sources */,
 				976AD0A72A0104D50026E6F8 /* LoginManager.swift in Sources */,
+				976AD0AD2A0232A00026E6F8 /* TimeCheckHelper.swift in Sources */,
 				9755368F29D92F3900564024 /* SignUpViewModel.swift in Sources */,
 				9755365F29D92EB900564024 /* ViewController.swift in Sources */,
 				976AD09D29FFA26F0026E6F8 /* MemberManager.swift in Sources */,
 				9755365B29D92EB900564024 /* AppDelegate.swift in Sources */,
 				976AD0A32A00E0840026E6F8 /* AccountCheckHelper.swift in Sources */,
-				976AD09329FB4E840026E6F8 /* HomeViewController.swift in Sources */,
+				976AD09329FB4E840026E6F8 /* QRCodeViewController.swift in Sources */,
 				970DF08729D93512007A8CDA /* TextFieldTableViewCell.swift in Sources */,
 				976AD09A29FF8BAC0026E6F8 /* ScanViewController.swift in Sources */,
+				976AD0AA2A020BFA0026E6F8 /* VolunteerViewController.swift in Sources */,
 				976AD0A52A00F5DF0026E6F8 /* FirestoreDatabase.swift in Sources */,
 				976AD09029FA02270026E6F8 /* Model.swift in Sources */,
 				976AD09629FB61400026E6F8 /* QRCodeService.swift in Sources */,
@@ -556,7 +565,6 @@
 				976AD0A029FFA6E00026E6F8 /* ManagerViewController.swift in Sources */,
 				970DF08B29D93529007A8CDA /* ButtonTableViewCell.swift in Sources */,
 				976AD08D29F77E510026E6F8 /* LoginViewModel.swift in Sources */,
-				97B39AA029E64AA5004900FF /* GoogleSignInViewController.swift in Sources */,
 				9755365D29D92EB900564024 /* SceneDelegate.swift in Sources */,
 				976AD08A29F7740F0026E6F8 /* LoginViewController.swift in Sources */,
 			);

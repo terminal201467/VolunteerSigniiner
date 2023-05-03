@@ -87,20 +87,6 @@ class LoginViewModel {
         .disposed(by: disposeBag)
     }
     
-    //一般登入
-//    private func normalLogin(completion: @escaping ((String) -> Void)){
-//        authService.userLogin(with: self.inputAccount, password: self.inputPassword) { result in
-//            switch result {
-//            case .failure(let error):
-//                print("error:\(error.localizedDescription)")
-//                completion("登入失敗")
-//            case .success(_):
-//                print("Login succecss")
-//                completion("登入成功")
-//            }
-//        }
-//    }
-    
     private func normalLogin(completion: @escaping (String) -> (Void)) {
         let fillState = accountCheckHelper.checkBothAcountAndPassword(with: inputAccount, with: inputPassword)
         switch fillState {

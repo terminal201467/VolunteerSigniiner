@@ -153,8 +153,8 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     private func setToHomeViewController() {
         viewModel.loginResponse = { response in
             if response == "登入成功" || response == "true"{
-                let homeViewController = HomeViewController()
-                self.navigationController?.pushViewController(homeViewController, animated: true)
+                let qrCodeViewController = QRCodeViewController()
+                self.navigationController?.pushViewController(qrCodeViewController, animated: true)
             } else {
                 print("請再重新登入")
             }
@@ -164,6 +164,7 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
 
 extension LoginViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //這邊可能之後要盡量不寫死
         switch indexPath.item {
         case 0: return 100
         case 1: return 60

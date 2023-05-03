@@ -13,24 +13,23 @@ class MemberManager {
     //農場服務QRCode
     //服務時間：3、5、6 --> 12:00-17:30
     //-----------------------------------------------------------------------------------
-    
-    static let farmServiceID: String = "kNDaKlA0nHn5ABdRwRznJIzF1N25"
+    static let farmServiceLoginID: String = "kNDaKlA0nHn5ABdRwRznJIzF1N25"
     
     //鵬程據點QRCode
     ///服務時間：1-6 --> 8:30-17:30
-    static let pengChengServiceID: String = "FGJfo00MzTog3PHk3dQztWgqbJb2"
+    static let pengChengServiceLoginID: String = "FGJfo00MzTog3PHk3dQztWgqbJb2"
     
     //惠來老人據點QRCode
     ///服務時間：1-6 --> 8:30-17:30
-    static let huiLaiElderSeerviceID: String = "RfV7Drhd45OcJEn7vU8yIuV7myl2"
+    static let huiLaiElderSeerviceLoginID: String = "RfV7Drhd45OcJEn7vU8yIuV7myl2"
     
     //惠來身障據點QRCode
     ///服務時間：3、5 --> 8:30-12:00
-    static let huiLaiDisablePeopleServiceID: String = "oeEL7VpzeVD6uN7aIvE8uW7eUAb2"
+    static let huiLaiDisablePeopleServiceLoginID: String = "oeEL7VpzeVD6uN7aIvE8uW7eUAb2"
     
     //募款產品QRcode
     ///服務時間：1-5 --> 8:30-17:30
-    static let fundraisingServiceID: String = "LrJ6xfoNgtzdsqCnT2Qsjy7PmmJ2"
+    static let fundraisingServiceLoginID: String = "LrJ6xfoNgtzdsqCnT2Qsjy7PmmJ2"
     
     //-------------------------------------------------------------------------------------
     ///管理者UID基本上就是提供了這個QRCode，自己就是服務就是了
