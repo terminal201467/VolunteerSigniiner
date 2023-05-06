@@ -19,7 +19,13 @@ class ManagerViewController: UIViewController {
     
     @IBOutlet var outputFileButton: UIButton!
     
-    @IBOutlet var buttons: UIStackView!
+    @IBOutlet var attendActiveView: UIStackView!
+    
+    @IBOutlet var qrCodeView: UIStackView!
+    
+    @IBOutlet var boxView: UIStackView!
+    
+    private let firebaseAuth = FirebaseAuthService()
     
     private let disposeBag = DisposeBag()
     
@@ -34,6 +40,7 @@ class ManagerViewController: UIViewController {
 //        setButtons()
         setNavationBar()
         setButtonRxSubscribe()
+        setLabelAndStackView(with: firebaseAuth.getCurrentUser()?.displayName ?? "使用者")
         // Do any additional setup after loading the view.
     }
     
@@ -85,7 +92,9 @@ class ManagerViewController: UIViewController {
     
     private func setLabelAndStackView(with name: String) {
         helloAndNameLabel.text = "Hi，\(name)"
-        buttons.roundCorners(cornerRadius: 100)
+        attendActiveView.roundCorners(cornerRadius: 10)
+        qrCodeView.roundCorners(cornerRadius: 10)
+        boxView.roundCorners(cornerRadius: 10)
     }
 
 }

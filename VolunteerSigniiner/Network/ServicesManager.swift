@@ -1,5 +1,5 @@
 //
-//  MemberManager.swift
+//  ServicesManager.swift
 //  VolunteerSigniiner
 //
 //  Created by Jhen Mu on 2023/5/1.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MemberManager {
+class ServicesManager {
     
     //這裡會分成三者： 1.服務項目UID 2.管理者UID 3.開發者UID
     //農場服務QRCode

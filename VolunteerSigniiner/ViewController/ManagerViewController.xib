@@ -11,10 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManagerViewController" customModule="VolunteerSigniiner" customModuleProvider="target">
             <connections>
+                <outlet property="attendActiveView" destination="1C3-8w-NMB" id="JCU-NG-Aj0"/>
                 <outlet property="attendButton" destination="kvr-PN-DD9" id="aEJ-Rv-EXf"/>
-                <outlet property="buttons" destination="GKT-Pf-4El" id="B2i-1R-7CY"/>
+                <outlet property="boxView" destination="FdN-QX-eQi" id="cAO-ci-max"/>
                 <outlet property="helloAndNameLabel" destination="096-6d-Y5d" id="q5c-pE-aAV"/>
                 <outlet property="outputFileButton" destination="cyV-HX-Zea" id="fDe-UG-KK7"/>
+                <outlet property="qrCodeView" destination="JFX-qO-cET" id="6oK-kR-7Au"/>
                 <outlet property="serviceQRCodeButton" destination="o29-7n-OYH" id="Qyh-wB-Gtl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,108 +27,128 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="096-6d-Y5d" userLabel="HelloAndName">
-                    <rect key="frame" x="96.666666666666686" y="163.33333333333334" width="200" height="80"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <rect key="frame" x="96.666666666666686" y="151" width="200" height="80"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GKT-Pf-4El" userLabel="Buttons">
-                    <rect key="frame" x="31.666666666666657" y="383.66666666666669" width="330" height="110"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gYX-Hn-qHK" userLabel="ButtonStack">
+                    <rect key="frame" x="31.666666666666657" y="261" width="330" height="330"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="1C3-8w-NMB" userLabel="ＡttendActiveView">
-                            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" id="GKT-Pf-4El" userLabel="topButtons">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="160"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="kvr-PN-DD9" userLabel="AttendSituationButton">
-                                    <rect key="frame" x="0.0" y="0.0" width="110" height="92"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="1C3-8w-NMB" userLabel="AttendActiveView">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain">
-                                        <imageReference key="image" image="person.3.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="black"/>
-                                        <color key="baseForegroundColor" systemColor="systemMintColor"/>
-                                    </buttonConfiguration>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="參與狀態" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w3D-MZ-6PV" userLabel="AttendLabel">
-                                    <rect key="frame" x="0.0" y="92" width="110" height="18"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="kvr-PN-DD9" userLabel="AttendSituationButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="136"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain">
+                                                <imageReference key="image" image="person.3.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35" scale="large" weight="black"/>
+                                                <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="參與狀態" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w3D-MZ-6PV" userLabel="AttendLabel">
+                                            <rect key="frame" x="0.0" y="136" width="160" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <viewLayoutGuide key="safeArea" id="meE-5J-fkZ"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="JFX-qO-cET" userLabel="QRCodeView">
+                                    <rect key="frame" x="170" y="0.0" width="160" height="160"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="o29-7n-OYH" userLabel="ServiceQRCodeButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="138.33333333333334"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain">
+                                                <imageReference key="image" image="qrcode" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                                    <hierarchicalColors>
+                                                        <color white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color systemColor="secondaryLabelColor"/>
+                                                        <color systemColor="tertiaryLabelColor"/>
+                                                    </hierarchicalColors>
+                                                </imageReference>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="45" scale="large" weight="black"/>
+                                                <color key="baseForegroundColor" systemColor="systemTealColor"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服務QRCode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="LkT-ai-DY3" userLabel="QRCodeLabel">
+                                            <rect key="frame" x="0.0" y="138.33333333333334" width="160" height="21.666666666666657"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <viewLayoutGuide key="safeArea" id="lc9-6D-aA9"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </stackView>
                             </subviews>
-                            <viewLayoutGuide key="safeArea" id="meE-5J-fkZ"/>
+                            <viewLayoutGuide key="safeArea" id="byT-1I-TL3"/>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="JFX-qO-cET" userLabel="QRCodeView">
-                            <rect key="frame" x="110" y="0.0" width="110" height="110"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" id="RDl-hG-WAY" userLabel="bottomButtons">
+                            <rect key="frame" x="0.0" y="170" width="330" height="160"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="o29-7n-OYH" userLabel="ServiceQRCodeButton">
-                                    <rect key="frame" x="0.0" y="0.0" width="110" height="92"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="FdN-QX-eQi" userLabel="BoxView">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain">
-                                        <imageReference key="image" image="qrcode" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
-                                            <hierarchicalColors>
-                                                <color systemColor="systemMintColor"/>
-                                                <color systemColor="secondaryLabelColor"/>
-                                                <color systemColor="tertiaryLabelColor"/>
-                                            </hierarchicalColors>
-                                        </imageReference>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="black"/>
-                                        <color key="baseForegroundColor" systemColor="systemTealColor"/>
-                                    </buttonConfiguration>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服務QRCode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LkT-ai-DY3" userLabel="QRCodeLabel">
-                                    <rect key="frame" x="0.0" y="92" width="110" height="18"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cyV-HX-Zea" userLabel="OutputFileButton">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="136"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain">
+                                                <imageReference key="image" image="tray.and.arrow.up.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35" weight="black"/>
+                                                <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="輸出檔案" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pZo-0B-hnv" userLabel="OutputLabel">
+                                            <rect key="frame" x="0.0" y="136" width="160" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <viewLayoutGuide key="safeArea" id="KSg-Ml-AFP"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </stackView>
+                                <view contentMode="scaleToFill" id="JAy-AV-BdR">
+                                    <rect key="frame" x="170" y="0.0" width="160" height="160"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                </view>
                             </subviews>
-                            <viewLayoutGuide key="safeArea" id="lc9-6D-aA9"/>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="FdN-QX-eQi" userLabel="BoxView">
-                            <rect key="frame" x="220" y="0.0" width="110" height="110"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cyV-HX-Zea" userLabel="OutputFileButton">
-                                    <rect key="frame" x="0.0" y="0.0" width="110" height="92"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain">
-                                        <imageReference key="image" image="tray.and.arrow.up.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="black"/>
-                                        <color key="baseForegroundColor" systemColor="systemMintColor"/>
-                                    </buttonConfiguration>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="輸出檔案" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pZo-0B-hnv" userLabel="OutputLabel">
-                                    <rect key="frame" x="0.0" y="92" width="110" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <viewLayoutGuide key="safeArea" id="KSg-Ml-AFP"/>
+                            <viewLayoutGuide key="safeArea" id="c8L-lC-SJ9"/>
                         </stackView>
                     </subviews>
-                    <viewLayoutGuide key="safeArea" id="byT-1I-TL3"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <viewLayoutGuide key="safeArea" id="Ipb-0d-EQb"/>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="6Mh-cc-JVf"/>
             <color key="backgroundColor" systemColor="systemYellowColor"/>
             <constraints>
-                <constraint firstItem="GKT-Pf-4El" firstAttribute="centerX" secondItem="6Mh-cc-JVf" secondAttribute="centerX" id="D38-uI-xuO"/>
-                <constraint firstItem="GKT-Pf-4El" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.129108" id="G3C-H1-PrW"/>
-                <constraint firstItem="096-6d-Y5d" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ko9-03-Thp"/>
+                <constraint firstItem="gYX-Hn-qHK" firstAttribute="top" secondItem="096-6d-Y5d" secondAttribute="bottom" constant="30" id="4aV-Hg-3Ro"/>
+                <constraint firstItem="gYX-Hn-qHK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7jT-td-yux"/>
+                <constraint firstItem="gYX-Hn-qHK" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.387324" id="MeH-Us-RxR"/>
                 <constraint firstItem="096-6d-Y5d" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0938967" id="Xge-Ca-4rK"/>
-                <constraint firstItem="096-6d-Y5d" firstAttribute="top" secondItem="6Mh-cc-JVf" secondAttribute="top" constant="104.33333333333334" id="hhH-8g-jhh"/>
-                <constraint firstItem="GKT-Pf-4El" firstAttribute="centerY" secondItem="6Mh-cc-JVf" secondAttribute="centerY" id="mTt-hy-gJO"/>
+                <constraint firstItem="gYX-Hn-qHK" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.839695" id="apY-5f-fwg"/>
+                <constraint firstItem="096-6d-Y5d" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="c8k-Z4-5Gp"/>
+                <constraint firstItem="gYX-Hn-qHK" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jcj-XP-ELS"/>
                 <constraint firstItem="096-6d-Y5d" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.508906" id="v15-XD-fAc"/>
-                <constraint firstItem="GKT-Pf-4El" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.839695" id="xnb-RI-HDT"/>
             </constraints>
             <point key="canvasLocation" x="108" y="21"/>
         </view>
@@ -137,12 +159,6 @@
         <image name="tray.and.arrow.up.fill" catalog="system" width="128" height="115"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

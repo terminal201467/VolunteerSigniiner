@@ -11,6 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServiceQRCodeViewController" customModule="VolunteerSigniiner" customModuleProvider="target">
             <connections>
+                <outlet property="qrCodeImageView" destination="Q50-Wy-tDA" id="VRT-Ni-AgP"/>
+                <outlet property="qrcodeContainerView" destination="koa-Fk-gfF" id="nQE-rI-zz5"/>
+                <outlet property="returnButton" destination="D1D-3U-pGp" id="oFw-ee-eZP"/>
+                <outlet property="serviceKind" destination="zbj-6I-k5n" id="s5F-Yb-Odd"/>
+                <outlet property="serviceName" destination="07x-AJ-o7y" id="j2o-NY-xdI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,20 +25,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服務QRCode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcy-3g-gMv" userLabel="ServiceQRCodeTitle">
-                    <rect key="frame" x="82.666666666666686" y="129" width="228" height="56"/>
+                    <rect key="frame" x="83.000000000000014" y="129" width="227.33333333333337" height="56"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zbj-6I-k5n" userLabel="ServiceKind">
+                <segmentedControl opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zbj-6I-k5n" userLabel="ServiceKind">
                     <rect key="frame" x="14.666666666666657" y="215" width="364" height="32"/>
                     <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                     <segments>
-                        <segment title="農場服務"/>
-                        <segment title="鵬程據點"/>
+                        <segment title="農場"/>
+                        <segment title="鵬程"/>
                         <segment title="惠來老人"/>
                         <segment title="惠來身障"/>
-                        <segment title="募款產品"/>
+                        <segment title="募款"/>
                     </segments>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="koa-Fk-gfF" userLabel="QRCodeContainerView">
@@ -49,55 +54,72 @@
                         <constraint firstItem="Q50-Wy-tDA" firstAttribute="centerX" secondItem="koa-Fk-gfF" secondAttribute="centerX" id="PTv-8u-CGa"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07x-AJ-o7y" userLabel="ServiceName">
-                    <rect key="frame" x="71.666666666666686" y="606" width="250" height="40"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請掃描上面的QRcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPL-G0-0JF" userLabel="HintLabel">
-                    <rect key="frame" x="52.666666666666657" y="686" width="288" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1D-3U-pGp" userLabel="ReturnButton">
-                    <rect key="frame" x="157" y="758" width="79" height="35"/>
-                    <buttonConfiguration key="configuration" style="tinted" title="返回" titleAlignment="automatic">
+                    <rect key="frame" x="157.33333333333334" y="756" width="78.333333333333343" height="40"/>
+                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="返回">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <imageReference key="image" image="rectangle.portrait.and.arrow.right.fill" catalog="system" symbolScale="large"/>
+                    </state>
+                    <buttonConfiguration key="configuration" style="plain" title="返回">
                         <imageReference key="image" image="rectangle.portrait.and.arrow.right.fill" catalog="system" symbolScale="large"/>
                         <fontDescription key="titleFontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </buttonConfiguration>
                 </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2FI-CZ-8SE" userLabel="InfoStack">
+                    <rect key="frame" x="71.666666666666686" y="601" width="250" height="130"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="07x-AJ-o7y" userLabel="ServiceName">
+                            <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請掃描上面的QRcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PPL-G0-0JF" userLabel="HintLabel">
+                            <rect key="frame" x="0.0" y="70" width="250" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="j7b-g4-dko"/>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtP-wG-GZg" userLabel="topConstraintView">
+                    <rect key="frame" x="71.666666666666686" y="731" width="250" height="25"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemYellowColor"/>
             <constraints>
                 <constraint firstItem="mcy-3g-gMv" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="6KN-6H-4tQ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="D1D-3U-pGp" secondAttribute="bottom" constant="25" id="6U1-sc-uIJ"/>
                 <constraint firstItem="koa-Fk-gfF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.352113" id="FGH-IG-CaS"/>
-                <constraint firstItem="07x-AJ-o7y" firstAttribute="top" secondItem="koa-Fk-gfF" secondAttribute="bottom" constant="30" id="FIw-Qs-MOg"/>
                 <constraint firstItem="koa-Fk-gfF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="FrJ-rk-OyA"/>
-                <constraint firstItem="PPL-G0-0JF" firstAttribute="top" secondItem="07x-AJ-o7y" secondAttribute="bottom" constant="40" id="LCs-YJ-cfn"/>
+                <constraint firstItem="D1D-3U-pGp" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0469484" id="Gv3-Ef-b9u"/>
                 <constraint firstItem="Q50-Wy-tDA" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.610687" id="Q3v-hf-363"/>
                 <constraint firstItem="zbj-6I-k5n" firstAttribute="bottom" secondItem="koa-Fk-gfF" secondAttribute="top" constant="-30" id="QNg-G9-Gie"/>
-                <constraint firstItem="PPL-G0-0JF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qk8-By-mh0"/>
                 <constraint firstItem="zbj-6I-k5n" firstAttribute="top" secondItem="mcy-3g-gMv" secondAttribute="bottom" constant="30" id="R0X-a9-vCA"/>
                 <constraint firstItem="zbj-6I-k5n" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RdJ-uU-Yom"/>
+                <constraint firstItem="gtP-wG-GZg" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0293427" id="Wbl-BB-7E1"/>
                 <constraint firstItem="koa-Fk-gfF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z8x-n9-RQD"/>
+                <constraint firstItem="2FI-CZ-8SE" firstAttribute="top" secondItem="koa-Fk-gfF" secondAttribute="bottom" constant="25" id="aBH-uH-nC8"/>
                 <constraint firstItem="koa-Fk-gfF" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.763359" id="aL2-KO-XVl"/>
-                <constraint firstItem="07x-AJ-o7y" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.636132" id="cEA-D8-qhW"/>
-                <constraint firstItem="PPL-G0-0JF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0422535" id="dLD-eZ-5Jw"/>
                 <constraint firstItem="mcy-3g-gMv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0657277" id="eiJ-C9-wUD"/>
                 <constraint firstItem="zbj-6I-k5n" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.036385" id="hzg-Zs-wK7"/>
                 <constraint firstItem="Q50-Wy-tDA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.28169" id="i4y-Xn-wCD"/>
                 <constraint firstItem="D1D-3U-pGp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iVX-oK-6cF"/>
+                <constraint firstItem="gtP-wG-GZg" firstAttribute="top" secondItem="2FI-CZ-8SE" secondAttribute="bottom" id="iaB-FN-CB2"/>
+                <constraint firstItem="D1D-3U-pGp" firstAttribute="top" secondItem="gtP-wG-GZg" secondAttribute="bottom" id="jEB-f4-VY2"/>
                 <constraint firstItem="koa-Fk-gfF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lHE-vU-91e"/>
-                <constraint firstItem="07x-AJ-o7y" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.0469484" id="pwp-dB-tJD"/>
+                <constraint firstItem="gtP-wG-GZg" firstAttribute="centerX" secondItem="D1D-3U-pGp" secondAttribute="centerX" id="m0w-A2-3Am"/>
+                <constraint firstItem="gtP-wG-GZg" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.636132" id="qt6-6u-BFA"/>
                 <constraint firstItem="koa-Fk-gfF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="saG-mZ-Y5h"/>
                 <constraint firstItem="zbj-6I-k5n" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.926209" id="tce-KK-Yno"/>
-                <constraint firstItem="07x-AJ-o7y" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wa2-to-Fxa"/>
+                <constraint firstItem="2FI-CZ-8SE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uKA-BF-BS5"/>
             </constraints>
             <point key="canvasLocation" x="-69.465648854961827" y="20.422535211267608"/>
         </view>

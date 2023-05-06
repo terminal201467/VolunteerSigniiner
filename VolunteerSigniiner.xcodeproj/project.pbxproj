@@ -39,7 +39,7 @@
 		976AD09629FB61400026E6F8 /* QRCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09529FB61400026E6F8 /* QRCodeService.swift */; };
 		976AD09A29FF8BAC0026E6F8 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */; };
 		976AD09B29FF8BAC0026E6F8 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */; };
-		976AD09D29FFA26F0026E6F8 /* MemberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09C29FFA26F0026E6F8 /* MemberManager.swift */; };
+		976AD09D29FFA26F0026E6F8 /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09C29FFA26F0026E6F8 /* ServicesManager.swift */; };
 		976AD0A029FFA6E00026E6F8 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD09E29FFA6E00026E6F8 /* ManagerViewController.swift */; };
 		976AD0A129FFA6E00026E6F8 /* ManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD09F29FFA6E00026E6F8 /* ManagerViewController.xib */; };
 		976AD0A32A00E0840026E6F8 /* AccountCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0A22A00E0840026E6F8 /* AccountCheckHelper.swift */; };
@@ -117,7 +117,7 @@
 		976AD09729FE05CB0026E6F8 /* VolunteerSigniiner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VolunteerSigniiner.entitlements; sourceTree = "<group>"; };
 		976AD09829FF8BAC0026E6F8 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		976AD09929FF8BAC0026E6F8 /* ScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
-		976AD09C29FFA26F0026E6F8 /* MemberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManager.swift; sourceTree = "<group>"; };
+		976AD09C29FFA26F0026E6F8 /* ServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
 		976AD09E29FFA6E00026E6F8 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		976AD09F29FFA6E00026E6F8 /* ManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagerViewController.xib; sourceTree = "<group>"; };
 		976AD0A22A00E0840026E6F8 /* AccountCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCheckHelper.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 				977558D929E4F7DE00079908 /* FirebaseAuthService.swift */,
 				976AD0A42A00F5DE0026E6F8 /* FirestoreDatabase.swift */,
 				976AD09529FB61400026E6F8 /* QRCodeService.swift */,
-				976AD09C29FFA26F0026E6F8 /* MemberManager.swift */,
+				976AD09C29FFA26F0026E6F8 /* ServicesManager.swift */,
 				976AD0A62A0104D50026E6F8 /* LoginManager.swift */,
 			);
 			path = Network;
@@ -592,7 +592,7 @@
 				97668E4B2A05FD0A00ABECE8 /* ServiceQRCodeViewController.swift in Sources */,
 				9755368F29D92F3900564024 /* SignUpViewModel.swift in Sources */,
 				9755365F29D92EB900564024 /* ViewController.swift in Sources */,
-				976AD09D29FFA26F0026E6F8 /* MemberManager.swift in Sources */,
+				976AD09D29FFA26F0026E6F8 /* ServicesManager.swift in Sources */,
 				97668E432A05EDBC00ABECE8 /* AttendActiveViewController.swift in Sources */,
 				9755365B29D92EB900564024 /* AppDelegate.swift in Sources */,
 				976AD0A32A00E0840026E6F8 /* AccountCheckHelper.swift in Sources */,
