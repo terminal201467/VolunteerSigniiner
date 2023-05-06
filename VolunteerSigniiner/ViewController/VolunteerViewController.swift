@@ -15,15 +15,15 @@ class VolunteerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    //這邊有幾個功能：
+    
+    //1.顯示今天參與服務與開始打卡時間、結束打卡時間
+        //今天如果已經打了上工卡，那就要顯示今天打卡時間
+        //下班卡，也顯示下打卡時間
+    
+    //2.可以選擇要開QRCode掃描器 或是 顯示使用者的QRcode
+        // 顯示使用者的QRCode這點我還沒有什麼想法(請管理者幫打卡)
+    
+    
 }

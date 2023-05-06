@@ -22,46 +22,17 @@ class FirestoreDatabase {
     private let timeCheckHelper = TimeCheckHelper()
     
     //MARK: - Methods
-    func uploadScanInformation(name: String, uid: String, email: String, identity: String) {
-        let currentTime = timeCheckHelper.getCurrentTime()
+    func uploadScanInformation(name: String, serviceID: String, uid: String, email: String, identity: String) {
+        let currentTime = timeCheckHelper.getCurrentTimeString()
         let data: [String: Any] = [
             "email": email,
             "identity": identity,
-            "serviceID": uid,
+            "serviceID": serviceID,
             "timeStamp": currentTime,
+            "uid": uid,
             "userName": name
         ]
         insertToFirestore(data: data)
-    }
-    
-    func removeCertainInformation() {
-        let query = fireStoreDataBase.collection("SignInData").whereField("uid", isEqualTo: "")
-    }
-    
-    //調出特定據點與特定時間的參與狀況
-    func pickCertainInformation(by uid: String, time: String) {
-        //當日
-        
-        //
-        
-        //
-        
-        //
-    }
-    
-    //管理者才有的
-    func removeInformationPeriodly() {
-        
-    }
-    
-    func outputInformation(by period: String) {
-        
-    }
-    
-    func returnTimeStamp(by uid: String){
-//        readCertainInfoFromFirestore(serviceID: uid, email: <#T##String?#>, identity: <#T##String?#>, timeStamp: <#T##String?#>, userName: <#T##String?#>) { result in
-//            <#code#>
-//        }
     }
     
     //MARK: - Firebase CRUD Methods

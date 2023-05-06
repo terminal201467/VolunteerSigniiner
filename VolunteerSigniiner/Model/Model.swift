@@ -11,8 +11,9 @@ struct User {
     
     var name: String
     var email: String
-    var gender: String
     var identity: String
-    var UID: String
+    var timeStamp: String
+    var serviceID: String
+    var uid: String
     
 }

@@ -7,37 +7,16 @@
 
 import Foundation
 
-enum ServiceSignInTimeType: Int, CaseIterable {
-    case morningInAndOut = 0, morningInAndAfternoonOut, afternoonInAndOut
-    var timePeriod: String {
-        switch self {
-        case .morningInAndOut: return ""
-        case .morningInAndAfternoonOut: return ""
-        case .afternoonInAndOut: return ""
-        }
-    }
-}
-
 class TimeCheckHelper {
     
     //先檢查是不是已經有掃描記錄了，如果在3小時以內已經掃描過了
     //就跳通知說：某服務的UID已經掃描過了喔
     //那我這邊的UserDefault可能就要記得某個UID暫存的時間點
-    private let timeCheckDefults = UserDefaults(suiteName: "timeCheck")
+    private let timeCheckDefaults = UserDefaults(suiteName: "timeCheck")
     
-    //如果是同一個UID在不同時段要用，要怎麼辨別它是離開服務？
+    private let firestore = FirestoreDatabase()
     
-    //下午12:00之前只能掃一次
-    
-    //下午12:00點之前如果掃第二次，如果是有必須要離開的話，怎麼辦？
-    
-    //下午12:00之後只能掃一次
-    
-    //那如果志工是下午12:00之後才進來，要怎麼辦？，但下午12:00之後就必須走，要怎麼辦？
-    
-    //
-    
-    func getCurrentTime() -> String{
+    func getCurrentTimeString() -> String {
         let timeStamp = Date().timeIntervalSince1970
         let date = Date(timeIntervalSince1970: timeStamp)
         let dateFormatter = DateFormatter()
@@ -46,20 +25,61 @@ class TimeCheckHelper {
         return formattedDate
     }
     
-    func checkIn(withTime: String) {
-        
+    func getCurrentTime() -> Date {
+        let timeStamp = Date().timeIntervalSince1970
+        let date = Date(timeIntervalSince1970: timeStamp)
+        return date
     }
     
-    func checkout(withTime: String) {
-        
+    func transferTimeStringToDate(by timeString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        if let date = dateFormatter.date(from: timeString) {
+            return date
+        } else {
+            return nil
+        }
     }
     
-    
-    func checkRepeatLogin(withTime: String) -> Bool {
-        
-        
-        
-        return true
-    }
-    
+//    func checkInSavedTime(serviceID: String, UID: String, completion: @escaping (Result<String, Error>) -> Void ) {
+//        //get sericeID在今天的時間範疇下，某UID有沒有兩筆資料
+//        var certainServiceInfo: [User] = []
+//        firestore.readCertainInfoFromFirestore(serviceID: serviceID,
+//                                               email: nil,
+//                                               identity: nil,
+//                                               timeStamp: nil,
+//                                               userName: nil) { result in
+//            switch result {
+//            case .success(let success):
+//                for data in success {
+//                    if let userName = data["userName"] as? String,
+//                       let email = data["email"] as? String,
+//                       let serviceID = data["serviceID"] as? String,
+//                       let timeStamp = data["timeStamp"] as? String,
+//                       let identity = data["identity"] as? String,
+//                       let uid = data["uid"] as? String {
+//                        if uid == UID {
+//                            let uidCertainUser = User(name: userName, email: email, identity: identity, timeStamp: timeStamp, serviceID: serviceID, uid: uid)
+//                            certainServiceInfo.append(uidCertainUser)
+//                        }
+//                    }
+//                }
+//                if certainServiceInfo.count == 2 {
+//                    //如果已經有兩筆
+//                        //刪除Firestore上最後時間戳記的那筆
+//                    
+//                    certainServiceInfo.removeLast()
+//                        //上傳最後時間戳記的那筆
+//                } else {
+//                    //沒有兩筆資料
+//                        //上傳最新的時間戳記的那筆
+//                }
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        }
+//        
+//        //一天之中，一個serviceID、UID只能有兩筆時間戳記，且最後一筆時間戳記必須是最晚上傳的那筆
+//        
+//        //先把debounce放一邊，讓上傳者不要打爆Firebase之後再實現
+//    }
 }

@@ -28,6 +28,8 @@ class ScanViewController: UIViewController {
     private let fireBaseAuthService = FirebaseAuthService()
     
     private let firestoreDatabase = FirestoreDatabase()
+    
+    private let timeCheckHelper = TimeCheckHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,11 +88,8 @@ class ScanViewController: UIViewController {
     private func found(UID: String) {
         let name = fireBaseAuthService.getCurrentUser()?.displayName ?? ""
         let email = fireBaseAuthService.getCurrentUser()?.email ?? ""
-
-        
-        firestoreDatabase.uploadScanInformation(name: name, uid: UID, email: email, identity: "志工")
-        
-        
+        let userID = fireBaseAuthService.getCurrentUser()?.uid ?? ""
+        firestoreDatabase.uploadScanInformation(name: name, serviceID: UID, uid: UID, email: email, identity: "志工")
     }
     
 }

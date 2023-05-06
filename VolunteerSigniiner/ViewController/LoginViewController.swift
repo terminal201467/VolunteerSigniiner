@@ -153,8 +153,13 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     private func setToHomeViewController() {
         viewModel.loginResponse = { response in
             if response == "登入成功" || response == "true"{
-                let qrCodeViewController = QRCodeViewController()
-                self.navigationController?.pushViewController(qrCodeViewController, animated: true)
+//                let qrCodeViewController = QRCodeViewController()
+//                self.navigationController?.pushViewController(qrCodeViewController, animated: true)
+                //先判斷是管理者還是一般登入
+                let managerViewController = ManagerViewController()
+                self.navigationController?.pushViewController(managerViewController, animated: true)
+                
+                
             } else {
                 print("請再重新登入")
             }
