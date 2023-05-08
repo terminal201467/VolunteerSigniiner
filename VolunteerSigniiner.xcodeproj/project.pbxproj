@@ -52,6 +52,7 @@
 		976AD0B22A04A5D70026E6F8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0B12A04A5D70026E6F8 /* UIColor.swift */; };
 		976AD0B42A04A7A70026E6F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0B32A04A7A70026E6F8 /* UIView.swift */; };
 		977558DA29E4F7DE00079908 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977558D929E4F7DE00079908 /* FirebaseAuthService.swift */; };
+		97FF7FCD2A089948000CFBD1 /* VolunteerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF7FCC2A089948000CFBD1 /* VolunteerViewModel.swift */; };
 		CA1E360F97DF926F6F040228 /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B76B1C476E1D9CE36D7A17D /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework */; };
 		E86E9C26D5DC0EB7F144B243 /* Pods_VolunteerSigniinerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD962002A2D4E2B74C923AD /* Pods_VolunteerSigniinerTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +131,7 @@
 		976AD0B12A04A5D70026E6F8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		976AD0B32A04A7A70026E6F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		977558D929E4F7DE00079908 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		97FF7FCC2A089948000CFBD1 /* VolunteerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerViewModel.swift; sourceTree = "<group>"; };
 		AC814D6E22C0BAFD86D4F7DA /* Pods-VolunteerSigniinerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolunteerSigniinerTests.release.xcconfig"; path = "Target Support Files/Pods-VolunteerSigniinerTests/Pods-VolunteerSigniinerTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3EB77497218A2109F78249C /* Pods-VolunteerSigniiner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolunteerSigniiner.debug.xcconfig"; path = "Target Support Files/Pods-VolunteerSigniiner/Pods-VolunteerSigniiner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,6 +289,7 @@
 				976AD0A22A00E0840026E6F8 /* AccountCheckHelper.swift */,
 				976AD0AC2A0232A00026E6F8 /* TimeCheckHelper.swift */,
 				976AD0AE2A0496390026E6F8 /* ManagerViewModel.swift */,
+				97FF7FCC2A089948000CFBD1 /* VolunteerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 			files = (
 				977558DA29E4F7DE00079908 /* FirebaseAuthService.swift in Sources */,
 				976AD0AF2A0496390026E6F8 /* ManagerViewModel.swift in Sources */,
+				97FF7FCD2A089948000CFBD1 /* VolunteerViewModel.swift in Sources */,
 				970DF08F29D9354F007A8CDA /* TitleTableViewCell.swift in Sources */,
 				97668E472A05EE0600ABECE8 /* OutputFileViewController.swift in Sources */,
 				976AD0A72A0104D50026E6F8 /* LoginManager.swift in Sources */,

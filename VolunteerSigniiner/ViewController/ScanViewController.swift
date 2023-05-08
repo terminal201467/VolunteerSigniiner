@@ -25,11 +25,11 @@ class ScanViewController: UIViewController {
     
     private var previewLayer: AVCaptureVideoPreviewLayer?
     
-    private let fireBaseAuthService = FirebaseAuthService()
-    
     private let firestoreDatabase = FirestoreDatabase()
     
     private let timeCheckHelper = TimeCheckHelper()
+    
+    var scanValue: ((String) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,13 +85,6 @@ class ScanViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func found(UID: String) {
-        let name = fireBaseAuthService.getCurrentUser()?.displayName ?? ""
-        let email = fireBaseAuthService.getCurrentUser()?.email ?? ""
-        let userID = fireBaseAuthService.getCurrentUser()?.uid ?? ""
-        firestoreDatabase.uploadScanInformation(name: name, serviceID: UID, uid: UID, email: email, identity: "志工")
-    }
-    
 }
 
 extension ScanViewController: AVCaptureMetadataOutputObjectsDelegate {
@@ -101,7 +94,7 @@ extension ScanViewController: AVCaptureMetadataOutputObjectsDelegate {
         if let readableObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
             let stringValue = readableObject.stringValue {
                 AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                found(UID: stringValue)
+                self.scanValue?(stringValue)
         }
         dismiss(animated: true)
     }
