@@ -27,13 +27,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="096-6d-Y5d" userLabel="HelloAndName">
-                    <rect key="frame" x="96.666666666666686" y="151" width="200" height="80"/>
+                    <rect key="frame" x="96.666666666666686" y="-65.333333333333314" width="200" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gYX-Hn-qHK" userLabel="ButtonStack">
-                    <rect key="frame" x="31.666666666666657" y="261" width="330" height="330"/>
+                    <rect key="frame" x="31.666666666666657" y="-5.3333333333333712" width="330" height="330"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" id="GKT-Pf-4El" userLabel="topButtons">
                             <rect key="frame" x="0.0" y="0.0" width="330" height="160"/>

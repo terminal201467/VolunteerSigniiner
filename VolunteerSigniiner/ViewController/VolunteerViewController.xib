@@ -14,6 +14,7 @@
                 <outlet property="helloNameLabel" destination="uEP-gP-qyq" id="EmH-uC-NGf"/>
                 <outlet property="hintView" destination="Cg3-Ux-G5h" id="hKR-n6-QvE"/>
                 <outlet property="recordTimeButton" destination="AAA-0y-vYT" id="FOG-F3-r5I"/>
+                <outlet property="sendOutButton" destination="gSX-Pe-YyW" id="vK1-4h-z6S"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -45,7 +46,7 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEP-gP-qyq" userLabel="UserLabel">
                     <rect key="frame" x="46.666666666666657" y="143" width="300" height="60"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>

@@ -14,8 +14,6 @@ class TimeCheckHelper {
     //那我這邊的UserDefault可能就要記得某個UID暫存的時間點
     private let timeCheckDefaults = UserDefaults(suiteName: "timeCheck")
     
-    private let firestore = FirestoreDatabase()
-    
     func getCurrentTimeString() -> String {
         let timeStamp = Date().timeIntervalSince1970
         let date = Date(timeIntervalSince1970: timeStamp)

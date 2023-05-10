@@ -11,30 +11,45 @@ import RxSwift
 
 class VolunteerViewController: UIViewController {
     
-//    @IBOutlet var qrcodeButton: UIButton!
-    
     @IBOutlet var helloNameLabel: UILabel!
     
     @IBOutlet var recordTimeButton: UIButton!
     
+    @IBOutlet var sendOutButton: UIButton!
+    
     @IBOutlet var hintView: UIView!
+    
+    private let notServiceView = NotBeginServiceView()
+    
+    private let serviceView = ServiceView()
+    
+    private let viewModel = VolunteerViewModel()
     
     private let disposeBag = DisposeBag()
     
     private var scanViewController: ScanViewController?
     
-//    private var qrcodeViewController: QRCodeViewController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setHelloLabel()
+        setNavationBar()
         setButtonStyle()
         setButtonSubscribe()
-
+        setNotBeginView()
+    }
+    
+    private func setHelloLabel() {
+        helloNameLabel.text = "Hi，\(viewModel.getUserName())"
+    }
+    
+    private func setNavationBar() {
+        navigationItem.hidesBackButton = true
     }
     
     private func setButtonStyle() {
         hintView.roundCorners(cornerRadius: 5)
         recordTimeButton.roundCorners(cornerRadius: 10)
+        sendOutButton.roundCorners(cornerRadius: 10)
     }
     
     private func setButtonSubscribe() {
@@ -43,21 +58,77 @@ class VolunteerViewController: UIViewController {
                 self.scanViewController = ScanViewController()
                 self.navigationController?.pushViewController(self.scanViewController!, animated: true)
                 self.scanViewController?.scanValue = { uid in
-                    print(uid)
+                    if self.viewModel.isBeginService {
+                        self.viewModel.storeLastServiceInfo(serviceID: uid)
+                        self.setTimeConfigure()
+                    } else {
+                        self.viewModel.storeStartServiceInfo(serviceID: uid)
+                        self.viewModel.sendOutFirstRecord(serviceID: uid)
+                        self.removeNotServiceView()
+                        self.setBeginServiceView()
+                        self.setTimeConfigure()
+                        self.setStoreButton(by: false)
+                    }
                 }
             })
             .disposed(by: disposeBag)
+        
+        sendOutButton.rx.tap
+            .subscribe(onNext: {
+                self.viewModel.sendOutLastServiceRecord()
+                self.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setStoreButton(by sendType: Bool) {
+        if sendType {
+            recordTimeButton.setTitle("開始志願服務", for: .normal)
+        } else {
+            recordTimeButton.setTitleColor(.red, for: .normal)
+            recordTimeButton.setTitle("結束志願服務", for: .normal)
+            recordTimeButton.setImage(.remove, for: .normal)
+            recordTimeButton.tintColor = .red
+        }
+    }
+    
+    private func setNotBeginView() {
+        hintView.addSubview(notServiceView)
+        notServiceView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    private func setBeginServiceView() {
+        hintView.addSubview(serviceView)
+        serviceView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
+    private func removeNotServiceView() {
+        notServiceView.removeFromSuperview()
+    }
     
-    //這邊有幾個功能：
+    private func removeServiceView() {
+        serviceView.removeFromSuperview()
+    }
     
-    //1.顯示今天參與服務與開始打卡時間、結束打卡時間
-        //今天如果已經打了上工卡，那就要顯示今天打卡時間
-        //下班卡，也顯示下打卡時間
+    private func setServiceName(with uid: String) -> String {
+        switch uid {
+        case ServiceType.farmService.typeID:                return ServiceType.farmService.typeName
+        case ServiceType.huiLaiElderService.typeID:         return ServiceType.huiLaiElderService.typeName
+        case ServiceType.huilaiDisablePeopleService.typeID: return ServiceType.huilaiDisablePeopleService.typeName
+        case ServiceType.pengChengService.typeID:           return ServiceType.pengChengService.typeName
+        case ServiceType.fundrasingService.typeID:          return ServiceType.fundrasingService.typeName
+        default: return "沒有服務"
+        }
+    }
     
-    //2.可以選擇要開QRCode掃描器 或是 顯示使用者的QRcode
-        // 顯示使用者的QRCode這點我還沒有什麼想法(請管理者幫打卡)
-    
-    
+    private func setTimeConfigure() {
+        let startTime = viewModel.getFirstServiceInfo()?.timeStamp
+        let lastTime = viewModel.getLastServiceInfo()?.timeStamp
+        serviceView.configure(withName: setServiceName(with: viewModel.getFirstServiceInfo()?.uid ?? "未知的服務"))
+        serviceView.configure(byStartTime: startTime, byStopTime: lastTime)
+    }
 }

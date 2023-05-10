@@ -52,6 +52,8 @@
 		976AD0B22A04A5D70026E6F8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0B12A04A5D70026E6F8 /* UIColor.swift */; };
 		976AD0B42A04A7A70026E6F8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AD0B32A04A7A70026E6F8 /* UIView.swift */; };
 		977558DA29E4F7DE00079908 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977558D929E4F7DE00079908 /* FirebaseAuthService.swift */; };
+		97EE44752A0A15AE001F197A /* NotBeginServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE44742A0A15AE001F197A /* NotBeginServiceView.swift */; };
+		97EE44772A0A15C8001F197A /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE44762A0A15C8001F197A /* ServiceView.swift */; };
 		97FF7FCD2A089948000CFBD1 /* VolunteerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF7FCC2A089948000CFBD1 /* VolunteerViewModel.swift */; };
 		CA1E360F97DF926F6F040228 /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B76B1C476E1D9CE36D7A17D /* Pods_VolunteerSigniiner_VolunteerSigniinerUITests.framework */; };
 		E86E9C26D5DC0EB7F144B243 /* Pods_VolunteerSigniinerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD962002A2D4E2B74C923AD /* Pods_VolunteerSigniinerTests.framework */; };
@@ -131,6 +133,8 @@
 		976AD0B12A04A5D70026E6F8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		976AD0B32A04A7A70026E6F8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		977558D929E4F7DE00079908 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		97EE44742A0A15AE001F197A /* NotBeginServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotBeginServiceView.swift; sourceTree = "<group>"; };
+		97EE44762A0A15C8001F197A /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
 		97FF7FCC2A089948000CFBD1 /* VolunteerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerViewModel.swift; sourceTree = "<group>"; };
 		AC814D6E22C0BAFD86D4F7DA /* Pods-VolunteerSigniinerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolunteerSigniinerTests.release.xcconfig"; path = "Target Support Files/Pods-VolunteerSigniinerTests/Pods-VolunteerSigniinerTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3EB77497218A2109F78249C /* Pods-VolunteerSigniiner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VolunteerSigniiner.debug.xcconfig"; path = "Target Support Files/Pods-VolunteerSigniiner/Pods-VolunteerSigniiner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 		9755368C29D92EE600564024 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				97EE44742A0A15AE001F197A /* NotBeginServiceView.swift */,
+				97EE44762A0A15C8001F197A /* ServiceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97EE44752A0A15AE001F197A /* NotBeginServiceView.swift in Sources */,
 				977558DA29E4F7DE00079908 /* FirebaseAuthService.swift in Sources */,
 				976AD0AF2A0496390026E6F8 /* ManagerViewModel.swift in Sources */,
 				97FF7FCD2A089948000CFBD1 /* VolunteerViewModel.swift in Sources */,
@@ -600,6 +607,7 @@
 				97668E432A05EDBC00ABECE8 /* AttendActiveViewController.swift in Sources */,
 				9755365B29D92EB900564024 /* AppDelegate.swift in Sources */,
 				976AD0A32A00E0840026E6F8 /* AccountCheckHelper.swift in Sources */,
+				97EE44772A0A15C8001F197A /* ServiceView.swift in Sources */,
 				976AD09329FB4E840026E6F8 /* QRCodeViewController.swift in Sources */,
 				970DF08729D93512007A8CDA /* TextFieldTableViewCell.swift in Sources */,
 				976AD09A29FF8BAC0026E6F8 /* ScanViewController.swift in Sources */,

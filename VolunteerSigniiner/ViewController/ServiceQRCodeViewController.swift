@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-enum ServiceType: Int {
+enum ServiceType: Int, CaseIterable {
     case farmService = 0, pengChengService, huiLaiElderService, huilaiDisablePeopleService,fundrasingService
     var typeID: String {
         switch self {
@@ -18,6 +18,7 @@ enum ServiceType: Int {
         case .huiLaiElderService: return ServicesManager.huiLaiElderSeerviceLoginID
         case .huilaiDisablePeopleService: return ServicesManager.huiLaiDisablePeopleServiceLoginID
         case .fundrasingService: return ServicesManager.fundraisingServiceLoginID
+        default: return "沒有ID"
         }
     }
     var typeName: String {
@@ -27,6 +28,7 @@ enum ServiceType: Int {
         case .huiLaiElderService: return "惠來老人服務"
         case .huilaiDisablePeopleService: return "惠來身障服務"
         case .fundrasingService: return "募款產品服務"
+        default: return "沒有ID"
         }
     }
 }

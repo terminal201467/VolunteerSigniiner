@@ -95,7 +95,7 @@ extension ScanViewController: AVCaptureMetadataOutputObjectsDelegate {
             let stringValue = readableObject.stringValue {
                 AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
                 self.scanValue?(stringValue)
+                navigationController?.popViewController(animated: true)
         }
-        dismiss(animated: true)
     }
 }

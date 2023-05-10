@@ -8,6 +8,10 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import RxSwift
+import RxCocoa
+
+
 
 class VolunteerViewModel {
     
@@ -23,7 +27,7 @@ class VolunteerViewModel {
     
     private var storeFinishInfo: [User] = []
     
-    private var isBeginService: Bool = false
+    var isBeginService: Bool = false
     //使用者資訊
     func getUserName() -> String {
         self.firebaseAuthAervice.getCurrentUser()?.displayName ?? "使用者"
@@ -38,7 +42,7 @@ class VolunteerViewModel {
     }
     
     //MARK: - 記錄結束服務的相關資訊
-    func recordFinishServiceInfo(serviceID: String) {
+    func storeLastServiceInfo(serviceID: String) {
         let name = self.firebaseAuthAervice.getCurrentUser()?.displayName ?? "使用者"
         let uid = self.firebaseAuthAervice.getCurrentUser()?.uid ?? "未知的uid"
         let email = self.firebaseAuthAervice.getCurrentUser()?.email ?? ""
